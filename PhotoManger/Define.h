@@ -28,4 +28,5 @@
 #define IsChineseHant [CurrentLanguage rangeOfString:@"zh-Hant"].length// 繁体zh-Hant
 #define AddAction(btn,actions) [btn addTarget:self action:@selector(actions) forControlEvents:UIControlEventTouchUpInside]
 
+#define Frame(a,b,c,d) CGRectMake(a, b, c, d)
 #endif /* Define_h */

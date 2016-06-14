@@ -10,5 +10,6 @@
 #define PhotoManger_pch
 
 #import "Define.h"
+#import "Masonry.h"
 
 #endif /* PhotoManger_pch */

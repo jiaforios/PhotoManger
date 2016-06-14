@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		381C485D1D103FEF000453D2 /* CameraControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C485C1D103FEF000453D2 /* CameraControlView.m */; };
+		381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C48601D10401C000453D2 /* ImagePickerViewController.m */; };
 		75FADAC31D0FD9D4006088BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADAC21D0FD9D4006088BF /* main.m */; };
 		75FADAC61D0FD9D4006088BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADAC51D0FD9D4006088BF /* AppDelegate.m */; };
 		75FADACC1D0FD9D4006088BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FADACA1D0FD9D4006088BF /* Main.storyboard */; };
@@ -28,7 +30,6 @@
 		75FADB941D0FE57F006088BF /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADB861D0FE57F006088BF /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		75FADB951D0FE57F006088BF /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADB881D0FE57F006088BF /* View+MASAdditions.m */; };
 		75FADB961D0FE57F006088BF /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADB8B1D0FE57F006088BF /* ViewController+MASAdditions.m */; };
-		75FADB9F1D1006DA006088BF /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADB9E1D1006DA006088BF /* ImagePickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		381C485B1D103FEF000453D2 /* CameraControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraControlView.h; sourceTree = "<group>"; };
+		381C485C1D103FEF000453D2 /* CameraControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraControlView.m; sourceTree = "<group>"; };
+		381C485F1D10401C000453D2 /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
+		381C48601D10401C000453D2 /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
 		75FADABE1D0FD9D4006088BF /* PhotoManger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoManger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75FADAC21D0FD9D4006088BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75FADAC41D0FD9D4006088BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,8 +102,6 @@
 		75FADB891D0FE57F006088BF /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		75FADB8A1D0FE57F006088BF /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		75FADB8B1D0FE57F006088BF /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		75FADB9D1D1006DA006088BF /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
-		75FADB9E1D1006DA006088BF /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		381C485A1D103FEF000453D2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				381C485B1D103FEF000453D2 /* CameraControlView.h */,
+				381C485C1D103FEF000453D2 /* CameraControlView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		381C485E1D10401C000453D2 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				381C485F1D10401C000453D2 /* ImagePickerViewController.h */,
+				381C48601D10401C000453D2 /* ImagePickerViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
 		75FADAB51D0FD9D4006088BF = {
 			isa = PBXGroup;
 			children = (
@@ -258,8 +279,8 @@
 		75FADB971D0FF1CD006088BF /* cameraVC */ = {
 			isa = PBXGroup;
 			children = (
-				75FADB9D1D1006DA006088BF /* ImagePickerViewController.h */,
-				75FADB9E1D1006DA006088BF /* ImagePickerViewController.m */,
+				381C485E1D10401C000453D2 /* viewController */,
+				381C485A1D103FEF000453D2 /* view */,
 			);
 			path = cameraVC;
 			sourceTree = "<group>";
@@ -413,9 +434,10 @@
 				75FADB421D0FDBCE006088BF /* PmBaseViewController.m in Sources */,
 				75FADB921D0FE57F006088BF /* MASViewConstraint.m in Sources */,
 				75FADAC61D0FD9D4006088BF /* AppDelegate.m in Sources */,
+				381C485D1D103FEF000453D2 /* CameraControlView.m in Sources */,
 				75FADAC31D0FD9D4006088BF /* main.m in Sources */,
+				381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */,
 				75FADB701D0FE2E8006088BF /* MainViewController.m in Sources */,
-				75FADB9F1D1006DA006088BF /* ImagePickerViewController.m in Sources */,
 				75FADB951D0FE57F006088BF /* View+MASAdditions.m in Sources */,
 				75FADB8D1D0FE57F006088BF /* MASCompositeConstraint.m in Sources */,
 				75FADB911D0FE57F006088BF /* MASViewAttribute.m in Sources */,
@@ -567,7 +589,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PhotoManger/PhotoManger.pch";
 				INFOPLIST_FILE = PhotoManger/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zengjiaPhoto.PhotoManger;
@@ -581,7 +603,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PhotoManger/PhotoManger.pch";
 				INFOPLIST_FILE = PhotoManger/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zengjiaPhoto.PhotoManger;

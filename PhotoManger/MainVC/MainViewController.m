@@ -7,8 +7,8 @@
 //
 
 #import "MainViewController.h"
-#import "Masonry.h"
 #import "ImagePickerViewController.h"
+#import "CameraControlView.h"
 @interface MainViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIButton *phontoButton;
@@ -44,6 +44,7 @@
 {
     [self.view addSubview:self.cameraButton];
     [self.view addSubview:self.phontoButton];
+
     [self viewLayout];
 }
 

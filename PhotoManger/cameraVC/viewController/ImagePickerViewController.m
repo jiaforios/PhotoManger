@@ -7,9 +7,9 @@
 //
 
 #import "ImagePickerViewController.h"
-
+#import "CameraControlView.h"
 @interface ImagePickerViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-
+@property(nonatomic, strong)CameraControlView *cameraControlView;
 @end
 
 @implementation ImagePickerViewController
@@ -28,6 +28,16 @@
     return pickerManger;
     
 }
+
+-(CameraControlView *)cameraControlView
+{
+    if (_cameraControlView == nil) {
+        
+        _cameraControlView = [[CameraControlView alloc] initWithFrame:Frame(0, SCREEN_HEIGHT-80, SCREEN_WIDTH, 80)];
+    }
+    
+    return _cameraControlView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,9 +51,13 @@
     UIButton *continueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     continueBtn.frame = CGRectMake(70, SCREEN_HEIGHT-57, 80, 20);
     [continueBtn setTitle:PmLocalizedString(@"继续拍照") forState:UIControlStateNormal];
-    
     continueBtn.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:continueBtn];
+    UIView *view =[[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50, SCREEN_WIDTH, 50)];
+    view.backgroundColor = [UIColor blueColor];
+    view.alpha = 0.2;
+    self.showsCameraControls = NO;
+    self.cameraViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1.75, 1.75);
+    self.cameraOverlayView = self.cameraControlView;
 }
 
 
