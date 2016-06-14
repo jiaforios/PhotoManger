@@ -8,8 +8,8 @@
 
 #import "MainViewController.h"
 #import "Masonry.h"
-#define AddAction(btn,actions) [btn addTarget:self action:@selector(actions) forControlEvents:UIControlEventTouchUpInside]
-@interface MainViewController ()
+#import "ImagePickerViewController.h"
+@interface MainViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIButton *phontoButton;
 
@@ -97,15 +97,21 @@
 - (void)cameraAction:(UIButton *)sender
 {
     
+    ImagePickerViewController *picker = [ImagePickerViewController sharePickeManger];
+    picker.imageBlock = ^(UIImage *img){
+        UIImage *imge = img;
+    };
     
+    [self presentViewController:picker animated:YES completion:nil];
+    
+
 }
+
 - (void)photoAction:(UIButton *)sender
 {
     
     
 }
-
-
 - (void)viewWillLayoutSubviews
 {
     // 3

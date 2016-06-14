@@ -26,6 +26,6 @@
 #define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
 #define IsChinese [CurrentLanguage rangeOfString:@"zh-Hans"].length// 简体zh-Hans
 #define IsChineseHant [CurrentLanguage rangeOfString:@"zh-Hant"].length// 繁体zh-Hant
-
+#define AddAction(btn,actions) [btn addTarget:self action:@selector(actions) forControlEvents:UIControlEventTouchUpInside]
 
 #endif /* Define_h */
