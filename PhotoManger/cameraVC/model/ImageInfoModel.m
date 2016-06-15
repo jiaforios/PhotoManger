@@ -18,16 +18,19 @@
         self.imageName = [self getCurrentTime];
         self.cameraTimes = [self getCurrentTime];
         self.imageClass = others;
-        self.imageNameSufix = @"jpg";
+        self.imageNameSufix = @".jpg";
     }
     return self;
 }
 
 - (NSString *)getCurrentTime
 {
-    
-    NSString *times;
-    return times;
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"YYYY_MM_dd_HH_mm_ss_SS"];
+    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    //    NSDate *date = [dateformatter dateFromString:locationString];
+    return locationString;
 }
 
 @end

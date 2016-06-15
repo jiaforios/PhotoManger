@@ -31,6 +31,7 @@
     // Do any additional setup after loading the view.
     [self valueInit];
     [self setUpViews];
+    
 }
 
 // 值的初始化
@@ -99,6 +100,7 @@
 {
     
     ImagePickerViewController *picker = [ImagePickerViewController sharePickeManger];
+        
     [self presentViewController:picker animated:YES completion:nil];
     
 

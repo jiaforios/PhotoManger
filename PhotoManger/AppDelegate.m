@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "ImageVideoFilesManger.h"
+
 @interface AppDelegate ()
 
 @end
@@ -18,7 +20,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // 在程序的document 的文件夹下创建 photo 和 video 文件夹
+    
+    
     self.window.rootViewController = [[MainViewController alloc] init];
+    
     return YES;
 }
 

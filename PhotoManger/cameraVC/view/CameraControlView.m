@@ -7,7 +7,7 @@
 //
 
 #import "CameraControlView.h"
-
+#import "UIButton+PressAnimation.h"
 @interface CameraControlView()
 @property(nonatomic, strong)UIButton *cancelButton;       // 取消拍照
 @property(nonatomic, strong)UIButton *useButton;          // 图片显示
@@ -71,6 +71,7 @@
 -(void)btnAction:(UIButton *)sender
 {
     if (_btnActionBlock) {
+        [sender pressAnimation];
         _btnActionBlock(sender);
     }
 }
@@ -90,5 +91,8 @@
     
     return _imageBlcok;
 }
+
+
+
 
 @end

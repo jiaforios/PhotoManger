@@ -11,6 +11,9 @@
 		381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C48601D10401C000453D2 /* ImagePickerViewController.m */; };
 		75B402551D10EA0B002EE404 /* ImageInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B402541D10EA0B002EE404 /* ImageInfoModel.m */; };
 		75B402581D10F248002EE404 /* ImageFileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B402571D10F248002EE404 /* ImageFileModel.m */; };
+		75B4025B1D10FA08002EE404 /* UIButton+PressAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B4025A1D10FA08002EE404 /* UIButton+PressAnimation.m */; };
+		75B4025E1D10FDD3002EE404 /* ImageVideoFilesManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B4025D1D10FDD3002EE404 /* ImageVideoFilesManger.m */; };
+		75B402611D1107CD002EE404 /* NSObject+modelConvertDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B402601D1107CD002EE404 /* NSObject+modelConvertDic.m */; };
 		75FADAC31D0FD9D4006088BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADAC21D0FD9D4006088BF /* main.m */; };
 		75FADAC61D0FD9D4006088BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADAC51D0FD9D4006088BF /* AppDelegate.m */; };
 		75FADACC1D0FD9D4006088BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FADACA1D0FD9D4006088BF /* Main.storyboard */; };
@@ -60,6 +63,12 @@
 		75B402541D10EA0B002EE404 /* ImageInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageInfoModel.m; sourceTree = "<group>"; };
 		75B402561D10F248002EE404 /* ImageFileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFileModel.h; sourceTree = "<group>"; };
 		75B402571D10F248002EE404 /* ImageFileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFileModel.m; sourceTree = "<group>"; };
+		75B402591D10FA07002EE404 /* UIButton+PressAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+PressAnimation.h"; sourceTree = "<group>"; };
+		75B4025A1D10FA08002EE404 /* UIButton+PressAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+PressAnimation.m"; sourceTree = "<group>"; };
+		75B4025C1D10FDD3002EE404 /* ImageVideoFilesManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageVideoFilesManger.h; sourceTree = "<group>"; };
+		75B4025D1D10FDD3002EE404 /* ImageVideoFilesManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageVideoFilesManger.m; sourceTree = "<group>"; };
+		75B4025F1D1107CD002EE404 /* NSObject+modelConvertDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+modelConvertDic.h"; sourceTree = "<group>"; };
+		75B402601D1107CD002EE404 /* NSObject+modelConvertDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+modelConvertDic.m"; sourceTree = "<group>"; };
 		75FADABE1D0FD9D4006088BF /* PhotoManger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoManger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75FADAC21D0FD9D4006088BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75FADAC41D0FD9D4006088BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -140,6 +149,12 @@
 			children = (
 				381C485B1D103FEF000453D2 /* CameraControlView.h */,
 				381C485C1D103FEF000453D2 /* CameraControlView.m */,
+				75B402591D10FA07002EE404 /* UIButton+PressAnimation.h */,
+				75B4025A1D10FA08002EE404 /* UIButton+PressAnimation.m */,
+				75B4025F1D1107CD002EE404 /* NSObject+modelConvertDic.h */,
+				75B402601D1107CD002EE404 /* NSObject+modelConvertDic.m */,
+				75B4025C1D10FDD3002EE404 /* ImageVideoFilesManger.h */,
+				75B4025D1D10FDD3002EE404 /* ImageVideoFilesManger.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -464,8 +479,11 @@
 				75FADB8F1D0FE57F006088BF /* MASConstraintMaker.m in Sources */,
 				75FADB931D0FE57F006088BF /* NSArray+MASAdditions.m in Sources */,
 				75FADB961D0FE57F006088BF /* ViewController+MASAdditions.m in Sources */,
+				75B4025E1D10FDD3002EE404 /* ImageVideoFilesManger.m in Sources */,
 				75FADB8E1D0FE57F006088BF /* MASConstraint.m in Sources */,
 				75FADB901D0FE57F006088BF /* MASLayoutConstraint.m in Sources */,
+				75B4025B1D10FA08002EE404 /* UIButton+PressAnimation.m in Sources */,
+				75B402611D1107CD002EE404 /* NSObject+modelConvertDic.m in Sources */,
 				75FADB431D0FDBCE006088BF /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

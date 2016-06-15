@@ -8,6 +8,8 @@
 
 #import "ImagePickerViewController.h"
 #import "CameraControlView.h"
+#import "ImageVideoFilesManger.h"
+#import "ImageInfoModel.h"
 @interface ImagePickerViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic, strong)CameraControlView *cameraControlView;
 @end
@@ -48,6 +50,17 @@
         self.allowsEditing = YES;
         self.delegate = self;
     }
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(actions)];
+    
+    swipe.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipe];
+    
+    
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapFullScreen)];
+    tap2.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:tap2];
+    
     UIButton *continueBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     continueBtn.frame = CGRectMake(70, SCREEN_HEIGHT-57, 80, 20);
     [continueBtn setTitle:PmLocalizedString(@"继续拍照") forState:UIControlStateNormal];
@@ -56,7 +69,8 @@
     view.backgroundColor = [UIColor blueColor];
     view.alpha = 0.2;
     self.showsCameraControls = NO;
-    self.cameraViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1.75, 1.75);
+    
+    self.cameraViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
     self.cameraOverlayView = self.cameraControlView;
     __block ImagePickerViewController *weakself = self;
     _cameraControlView.btnActionBlock = ^(UIButton *btn){
@@ -71,11 +85,12 @@
             case Camerabutton:
             {
                 [weakself takePicture]; // 拍照
+                
             }
                 break;
             case Usephotpbutton:
             {
-                
+                weakself.cameraViewTransform = CGAffineTransformMakeScale(1.7, 1.7);
             }
                 break;
   
@@ -85,6 +100,48 @@
     };
 }
 
+- (void)doubleTapFullScreen
+{
+    static BOOL isfull = NO;
+    isfull = !isfull;
+    
+    if (isfull) {
+        self.cameraViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+    }else
+    {
+        self.cameraViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1.7, 1.7);
+
+    }
+}
+-(void)actions
+{
+    NSLog(@"22");
+}
+
+- (void)createImageInfoModelWithimage:(UIImage *)image
+{
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    ImageInfoModel *model = [[ImageInfoModel alloc] init];
+    model.imageData = imageData;
+    model.imageSize=  image.size;
+    model.imageSizeStr = [NSString stringWithFormat:@"%.f*%.f",image.size.width,image.size.height];
+    // 根据拍摄时间创建文件路径
+    NSArray *timeArr = [model.cameraTimes componentsSeparatedByString:@"_"];
+    NSString*dayFilename = [[timeArr subarrayWithRange:NSMakeRange(0, 3)] componentsJoinedByString:@""];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+
+      NSString *dayFile = [ImageVideoFilesManger createDirectoryPath:[NSString stringWithFormat:@"%@/%@",[ImageVideoFilesManger PhotoFilePath],dayFilename]];
+        
+        [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@.jpg",dayFile,model.cameraTimes] WithContentData:model.imageData];
+        
+//       [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@/%@.jpg",[ImageVideoFilesManger PhotoFilePath],dayFile,model.cameraTimes] WithContentData:model.imageData];
+    });
+    
+//    showModelContent(model);
+    
+}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
@@ -95,15 +152,20 @@
         
                 UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         
+        NSLog(@"size = %@",NSStringFromCGSize(image.size));
+        
+        NSDictionary *imageInfoDictionry = [info objectForKey:@"UIImagePickerControllerMediaMetadata"];
+        
+        NSLog(@"imageinfo = %@ ",imageInfoDictionry);
         // 将image 转化为data 数据
-                NSData *imageData = UIImageJPEGRepresentation(image, 1);
-        
-    
         //        UIImage *image1 = [UIImage imageWithData:imageData];
-        
         NSLog(@"find a image");
-        
         _cameraControlView.imageBlcok(image);
+
+        [self createImageInfoModelWithimage:image];
+        
+        
+        
         //        [self dismissViewControllerAnimated:YES completion:nil];
         
     }
@@ -115,7 +177,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
