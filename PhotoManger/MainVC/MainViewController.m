@@ -99,10 +99,6 @@
 {
     
     ImagePickerViewController *picker = [ImagePickerViewController sharePickeManger];
-    picker.imageBlock = ^(UIImage *img){
-        UIImage *imge = img;
-    };
-    
     [self presentViewController:picker animated:YES completion:nil];
     
 

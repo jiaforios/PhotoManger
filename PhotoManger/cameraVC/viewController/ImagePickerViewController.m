@@ -58,6 +58,31 @@
     self.showsCameraControls = NO;
     self.cameraViewTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1.75, 1.75);
     self.cameraOverlayView = self.cameraControlView;
+    __block ImagePickerViewController *weakself = self;
+    _cameraControlView.btnActionBlock = ^(UIButton *btn){
+    
+        switch (btn.tag) {
+            case Cancelbutton:
+            {
+                
+                [weakself dismissViewControllerAnimated:YES completion:nil];
+            }
+                break;
+            case Camerabutton:
+            {
+                [weakself takePicture]; // 拍照
+            }
+                break;
+            case Usephotpbutton:
+            {
+                
+            }
+                break;
+  
+            default:
+                break;
+        }
+    };
 }
 
 
@@ -71,17 +96,17 @@
                 UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         
         // 将image 转化为data 数据
-        //        NSData *imageData = UIImageJPEGRepresentation(image, 1);
+                NSData *imageData = UIImageJPEGRepresentation(image, 1);
         
+    
         //        UIImage *image1 = [UIImage imageWithData:imageData];
         
         NSLog(@"find a image");
-        _imageBlock(image);
         
-        [self dismissViewControllerAnimated:YES completion:nil];
+        _cameraControlView.imageBlcok(image);
+        //        [self dismissViewControllerAnimated:YES completion:nil];
         
     }
-    
     
 }
 

@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface ImagePickerViewController : UIImagePickerController
 + (instancetype)sharePickeManger;
-@property(nonatomic, strong)void(^imageBlock)(UIImage *img);
 
 @end

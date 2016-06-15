@@ -9,9 +9,9 @@
 #import "CameraControlView.h"
 
 @interface CameraControlView()
-@property(nonatomic, strong)UIButton *cancelButton;
-@property(nonatomic, strong)UIButton *useButton;
-@property(nonatomic, strong)UIButton *continePhotoButton;
+@property(nonatomic, strong)UIButton *cancelButton;       // 取消拍照
+@property(nonatomic, strong)UIButton *useButton;          // 图片显示
+@property(nonatomic, strong)UIButton *continePhotoButton; // 拍照
 
 @end
 @implementation CameraControlView
@@ -48,6 +48,7 @@
         [_useButton setTitle:PmLocalizedString(@"UsePhoto") forState:UIControlStateNormal];
         _useButton.frame = Frame(SCREEN_WIDTH-100, 0, 100,CGRectGetHeight(self.frame));
         _useButton.tag = Usephotpbutton;
+        [_useButton setImageEdgeInsets:UIEdgeInsetsMake(10, 20, 10, 20)];
         AddAction(_useButton, btnAction:);
         
     }
@@ -60,8 +61,7 @@
         _continePhotoButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_continePhotoButton setTitle:PmLocalizedString(@"Camera") forState:UIControlStateNormal];
         _continePhotoButton.frame = Frame(SCREEN_WIDTH/2-50, 0, 100,CGRectGetHeight(self.frame));
-        _useButton.tag = Camerabutton;
-
+        _continePhotoButton.tag = Camerabutton;
         AddAction(_continePhotoButton, btnAction:);
 
     }
@@ -73,6 +73,22 @@
     if (_btnActionBlock) {
         _btnActionBlock(sender);
     }
+}
+
+
+- (CurrentImageBlock)imageBlcok
+{
+   __weak CameraControlView *weakself = self;
+    if (_imageBlcok == nil) {
+        
+        _imageBlcok = ^(UIImage *img){
+            // 将刚拍的图片给右下角的按钮显示
+            [weakself.useButton setImage:img forState:UIControlStateNormal];
+            
+        };
+    }
+    
+    return _imageBlcok;
 }
 
 @end

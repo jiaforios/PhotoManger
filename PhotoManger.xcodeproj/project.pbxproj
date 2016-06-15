@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		381C485D1D103FEF000453D2 /* CameraControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C485C1D103FEF000453D2 /* CameraControlView.m */; };
 		381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C48601D10401C000453D2 /* ImagePickerViewController.m */; };
+		75B402551D10EA0B002EE404 /* ImageInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B402541D10EA0B002EE404 /* ImageInfoModel.m */; };
+		75B402581D10F248002EE404 /* ImageFileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B402571D10F248002EE404 /* ImageFileModel.m */; };
 		75FADAC31D0FD9D4006088BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADAC21D0FD9D4006088BF /* main.m */; };
 		75FADAC61D0FD9D4006088BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADAC51D0FD9D4006088BF /* AppDelegate.m */; };
 		75FADACC1D0FD9D4006088BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FADACA1D0FD9D4006088BF /* Main.storyboard */; };
@@ -54,6 +56,10 @@
 		381C485C1D103FEF000453D2 /* CameraControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraControlView.m; sourceTree = "<group>"; };
 		381C485F1D10401C000453D2 /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
 		381C48601D10401C000453D2 /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
+		75B402531D10EA0B002EE404 /* ImageInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfoModel.h; sourceTree = "<group>"; };
+		75B402541D10EA0B002EE404 /* ImageInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageInfoModel.m; sourceTree = "<group>"; };
+		75B402561D10F248002EE404 /* ImageFileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFileModel.h; sourceTree = "<group>"; };
+		75B402571D10F248002EE404 /* ImageFileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFileModel.m; sourceTree = "<group>"; };
 		75FADABE1D0FD9D4006088BF /* PhotoManger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoManger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75FADAC21D0FD9D4006088BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75FADAC41D0FD9D4006088BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -145,6 +151,17 @@
 				381C48601D10401C000453D2 /* ImagePickerViewController.m */,
 			);
 			path = viewController;
+			sourceTree = "<group>";
+		};
+		75B402521D10E9E7002EE404 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				75B402531D10EA0B002EE404 /* ImageInfoModel.h */,
+				75B402541D10EA0B002EE404 /* ImageInfoModel.m */,
+				75B402561D10F248002EE404 /* ImageFileModel.h */,
+				75B402571D10F248002EE404 /* ImageFileModel.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		75FADAB51D0FD9D4006088BF = {
@@ -279,6 +296,7 @@
 		75FADB971D0FF1CD006088BF /* cameraVC */ = {
 			isa = PBXGroup;
 			children = (
+				75B402521D10E9E7002EE404 /* model */,
 				381C485E1D10401C000453D2 /* viewController */,
 				381C485A1D103FEF000453D2 /* view */,
 			);
@@ -439,8 +457,10 @@
 				381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */,
 				75FADB701D0FE2E8006088BF /* MainViewController.m in Sources */,
 				75FADB951D0FE57F006088BF /* View+MASAdditions.m in Sources */,
+				75B402581D10F248002EE404 /* ImageFileModel.m in Sources */,
 				75FADB8D1D0FE57F006088BF /* MASCompositeConstraint.m in Sources */,
 				75FADB911D0FE57F006088BF /* MASViewAttribute.m in Sources */,
+				75B402551D10EA0B002EE404 /* ImageInfoModel.m in Sources */,
 				75FADB8F1D0FE57F006088BF /* MASConstraintMaker.m in Sources */,
 				75FADB931D0FE57F006088BF /* NSArray+MASAdditions.m in Sources */,
 				75FADB961D0FE57F006088BF /* ViewController+MASAdditions.m in Sources */,
