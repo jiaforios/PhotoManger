@@ -99,14 +99,7 @@
 
 - (void)cameraAction:(UIButton *)sender
 {
-    
 
-    [LocationManger  shareLoacationWithLocationBlock:^(NSString *name, LocationInfo imglocation) {
-        
-        NSLog(@"name = %@ ",name);
-    }];
-
-    
     ImagePickerViewController *picker = [ImagePickerViewController sharePickeManger];
         
     [self presentViewController:picker animated:YES completion:nil];

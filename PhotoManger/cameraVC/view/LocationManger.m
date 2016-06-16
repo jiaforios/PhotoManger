@@ -25,10 +25,10 @@
     dispatch_once(&onceToken, ^{
         
         _manger = [[LocationManger alloc] init];
-        _manger.locablock = block;  // _manger.locablock  的 实现等于 传递过来的实现
 
     });
-    
+    _manger.locablock = block;  // _manger.locablock  的 实现等于 传递过来的实现
+
     [_manger.currentLocation startUpdatingLocation];
 }
 - (instancetype)init
@@ -37,7 +37,7 @@
         self.currentLocation = [[CLLocationManager alloc] init];
         _currentLocation.delegate = self;
         [_currentLocation requestAlwaysAuthorization];        //NSLocationAlwaysUsageDescription
-//        [_currentLocation requestWhenInUseAuthorization];     //NSLocationWhenInUseDescription
+        [_currentLocation requestWhenInUseAuthorization];     //NSLocationWhenInUseDescription
 
     }
     return self;

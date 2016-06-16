@@ -34,6 +34,9 @@
 
 + (NSString *)RemarkDataFilePath;  // 存储图片，录像相关配置信息，文件格式定为 对应的图片名称_remark.markdata
 
+// 保存图片的配置信息
 + (BOOL)AchvieToFileWithDic:(NSDictionary *)dictionry andName:(NSString *)name;
 
+// 解档图片的配置信息
++ (NSDictionary *)UnachiveFromFileWithName:(NSString *)name;
 @end

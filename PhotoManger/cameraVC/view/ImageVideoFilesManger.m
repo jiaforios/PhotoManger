@@ -110,6 +110,12 @@ static NSString *const remarkFile = @"zemarkFile";
   return [NSKeyedArchiver archiveRootObject:dictionry toFile:[[ImageVideoFilesManger RemarkDataFilePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_remark.markdata",name]]];
 }
 
++ (NSDictionary *)UnachiveFromFileWithName:(NSString *)name
+{
+    NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithFile:[[ImageVideoFilesManger RemarkDataFilePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_remark.markdata",name]]];
+    return dic;
+}
+
 @end
 
 
