@@ -10,6 +10,7 @@
 #import "CameraControlView.h"
 #import "ImageVideoFilesManger.h"
 #import "ImageInfoModel.h"
+#import "LocationManger.h"
 @interface ImagePickerViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic, strong)CameraControlView *cameraControlView;
 @end
@@ -158,6 +159,8 @@
         // 缩略图文件
        model.imageThumbFile = [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@_thumb.jpg",dayThumbFile,model.cameraTimes] WithContentData:thumbImageData];
         // 将model 转化成 字典 使用归档的方式保存字典
+        
+
         [ImageVideoFilesManger AchvieToFileWithDic:[model dictionaryFromModelWithShowLog:YES] andName:model.cameraTimes];
         
     });
@@ -172,6 +175,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     
+    
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     
     if ([mediaType isEqualToString:@"public.image"]) {
@@ -182,7 +186,7 @@
         
         NSDictionary *imageInfoDictionry = [info objectForKey:@"UIImagePickerControllerMediaMetadata"];
         
-        NSLog(@"imageinfo = %@ ",imageInfoDictionry);
+//        NSLog(@"imageinfo = %@ ",imageInfoDictionry);
         // 将image 转化为data 数据
         //        UIImage *image1 = [UIImage imageWithData:imageData];
         NSLog(@"find a image");

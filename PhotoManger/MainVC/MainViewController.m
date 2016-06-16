@@ -36,11 +36,6 @@
     // Do any additional setup after loading the view.
     [self valueInit];
     [self setUpViews];
-    
-    [LocationManger  shareLoacationWithLocationBlock:^(NSString *name) {
-        
-        NSLog(@"name = %@ ",name);
-    }];
 }
 
 // 值的初始化
@@ -104,6 +99,13 @@
 
 - (void)cameraAction:(UIButton *)sender
 {
+    
+
+    [LocationManger  shareLoacationWithLocationBlock:^(NSString *name, LocationInfo imglocation) {
+        
+        NSLog(@"name = %@ ",name);
+    }];
+
     
     ImagePickerViewController *picker = [ImagePickerViewController sharePickeManger];
         

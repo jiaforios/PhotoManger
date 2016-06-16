@@ -15,14 +15,11 @@ typedef enum : NSUInteger {
     others,
 }imageType;
 
-typedef struct LocationInfo {
-    float imageLongitude;  // 经度
-    float imageLatitude;   // 纬度
-}LocationInfo;
 #import <Foundation/Foundation.h>
 
 @interface ImageInfoModel : NSObject
-@property(nonatomic, assign)LocationInfo locations;                      // 拍照位置
+@property(nonatomic, assign)LocationInfo locations;                      // 拍照经纬度
+@property(nonatomic, copy)NSString *imageLoactions;                 // 拍摄位置
 @property(nonatomic, strong,readwrite)NSString * cameraTimes;      // 拍照时间 年 月 日 时 分 秒 毫秒
 @property(nonatomic, assign,readwrite)BOOL isImageEncrypted;      // 图片是否被加密
 @property(nonatomic, strong,readwrite)NSString *imageNameSufix;  // 图片格式后缀

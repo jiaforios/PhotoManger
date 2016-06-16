@@ -9,6 +9,12 @@
 #ifndef Define_h
 #define Define_h
 
+typedef struct LocationInfo {
+    float imageLongitude;  // 经度
+    float imageLatitude;   // 纬度
+}LocationInfo;
+
+
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]

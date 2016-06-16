@@ -6,7 +6,7 @@
 //  Copyright © 2016年 zengjia. All rights reserved.
 //
 
-typedef void(^locationBlock)(NSString *name);
+typedef void(^locationBlock)(NSString *name,LocationInfo imglocation);
 #import <Foundation/Foundation.h>
 @interface LocationManger : NSObject
 
