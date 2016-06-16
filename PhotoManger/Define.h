@@ -29,7 +29,7 @@
 #define AddAction(btn,actions) [btn addTarget:self action:@selector(actions) forControlEvents:UIControlEventTouchUpInside]
 
 #define Frame(a,b,c,d) CGRectMake(a, b, c, d)
-#define  showModelContent(model)[model dictionaryFromModel]
+#define  showModelContent(model)[model dictionaryFromModelWithShowLog:YES]
 
 
 #endif /* Define_h */

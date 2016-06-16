@@ -9,6 +9,9 @@
 #import "MainViewController.h"
 #import "ImagePickerViewController.h"
 #import "CameraControlView.h"
+#import "ImageVideoFilesManger.h"
+#import "SetViewController.h"
+#import "LocationManger.h"
 @interface MainViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIButton *phontoButton;
@@ -16,6 +19,8 @@
 @end
 
 @implementation MainViewController
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -32,14 +37,19 @@
     [self valueInit];
     [self setUpViews];
     
+    [LocationManger  shareLoacationWithLocationBlock:^(NSString *name) {
+        
+        NSLog(@"name = %@ ",name);
+    }];
 }
 
 // 值的初始化
 - (void)valueInit
 {
    self.view.backgroundColor = [UIColor whiteColor];
-}
 
+    
+}
 // 界面创建
 -(void)setUpViews
 {
@@ -54,25 +64,22 @@
 {
     
     [_cameraButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.centerY.equalTo(self.view);
         make.size.mas_equalTo(CGSizeMake(80, 80));
         make.left.equalTo(self.view).with.offset(50);
     
     }];
-    
     [_phontoButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.view);
         make.size.mas_equalTo(CGSizeMake(80, 80));
         make.right.equalTo(self.view).with.offset(-50);
-
     }];
-    
 }
+
+
 - (UIButton *)cameraButton
 {
     if (!_cameraButton) {
-        
         _cameraButton  =  [UIButton buttonWithType:UIButtonTypeCustom];
         _cameraButton.backgroundColor = [UIColor blueColor];
         _cameraButton.layer.cornerRadius = CGRectGetWidth(_cameraButton.frame)/2.f;
@@ -88,7 +95,6 @@
         _phontoButton.backgroundColor =[UIColor redColor];
         _phontoButton.layer.cornerRadius = CGRectGetWidth(_phontoButton.frame)/2.f;
         AddAction(_phontoButton, photoAction:);
-        
     }
     return _phontoButton;
 }
@@ -108,8 +114,8 @@
 
 - (void)photoAction:(UIButton *)sender
 {
-    
-    
+    SetViewController *set = [[SetViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:set animated:YES];
 }
 - (void)viewWillLayoutSubviews
 {

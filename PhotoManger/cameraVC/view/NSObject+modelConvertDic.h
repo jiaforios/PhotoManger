@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (modelConvertDic)
-- (void)dictionaryFromModel;
+- (NSDictionary *)dictionaryFromModelWithShowLog:(BOOL)show;
 @end

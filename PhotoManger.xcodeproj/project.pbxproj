@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		381C485D1D103FEF000453D2 /* CameraControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C485C1D103FEF000453D2 /* CameraControlView.m */; };
 		381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C48601D10401C000453D2 /* ImagePickerViewController.m */; };
+		75437DDE1D1289BF000C6DC1 /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75437DDD1D1289BF000C6DC1 /* SetViewController.m */; };
+		75437DE11D12982D000C6DC1 /* LocationManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 75437DE01D12982D000C6DC1 /* LocationManger.m */; };
+		75437DE31D129CFA000C6DC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75437DE21D129CFA000C6DC1 /* CoreLocation.framework */; };
 		75B402551D10EA0B002EE404 /* ImageInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B402541D10EA0B002EE404 /* ImageInfoModel.m */; };
 		75B402581D10F248002EE404 /* ImageFileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B402571D10F248002EE404 /* ImageFileModel.m */; };
 		75B4025B1D10FA08002EE404 /* UIButton+PressAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B4025A1D10FA08002EE404 /* UIButton+PressAnimation.m */; };
@@ -59,6 +62,11 @@
 		381C485C1D103FEF000453D2 /* CameraControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraControlView.m; sourceTree = "<group>"; };
 		381C485F1D10401C000453D2 /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
 		381C48601D10401C000453D2 /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
+		75437DDC1D1289BF000C6DC1 /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
+		75437DDD1D1289BF000C6DC1 /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
+		75437DDF1D12982D000C6DC1 /* LocationManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManger.h; sourceTree = "<group>"; };
+		75437DE01D12982D000C6DC1 /* LocationManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManger.m; sourceTree = "<group>"; };
+		75437DE21D129CFA000C6DC1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		75B402531D10EA0B002EE404 /* ImageInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfoModel.h; sourceTree = "<group>"; };
 		75B402541D10EA0B002EE404 /* ImageInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageInfoModel.m; sourceTree = "<group>"; };
 		75B402561D10F248002EE404 /* ImageFileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFileModel.h; sourceTree = "<group>"; };
@@ -124,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75437DE31D129CFA000C6DC1 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +162,8 @@
 				75B4025A1D10FA08002EE404 /* UIButton+PressAnimation.m */,
 				75B4025F1D1107CD002EE404 /* NSObject+modelConvertDic.h */,
 				75B402601D1107CD002EE404 /* NSObject+modelConvertDic.m */,
+				75437DDF1D12982D000C6DC1 /* LocationManger.h */,
+				75437DE01D12982D000C6DC1 /* LocationManger.m */,
 				75B4025C1D10FDD3002EE404 /* ImageVideoFilesManger.h */,
 				75B4025D1D10FDD3002EE404 /* ImageVideoFilesManger.m */,
 			);
@@ -182,6 +193,7 @@
 		75FADAB51D0FD9D4006088BF = {
 			isa = PBXGroup;
 			children = (
+				75437DE21D129CFA000C6DC1 /* CoreLocation.framework */,
 				75FADAC01D0FD9D4006088BF /* PhotoManger */,
 				75FADADA1D0FD9D4006088BF /* PhotoMangerTests */,
 				75FADAE51D0FD9D4006088BF /* PhotoMangerUITests */,
@@ -328,6 +340,8 @@
 		75FADB991D0FF1CD006088BF /* SettingVC */ = {
 			isa = PBXGroup;
 			children = (
+				75437DDC1D1289BF000C6DC1 /* SetViewController.h */,
+				75437DDD1D1289BF000C6DC1 /* SetViewController.m */,
 			);
 			path = SettingVC;
 			sourceTree = "<group>";
@@ -482,8 +496,10 @@
 				75B4025E1D10FDD3002EE404 /* ImageVideoFilesManger.m in Sources */,
 				75FADB8E1D0FE57F006088BF /* MASConstraint.m in Sources */,
 				75FADB901D0FE57F006088BF /* MASLayoutConstraint.m in Sources */,
+				75437DDE1D1289BF000C6DC1 /* SetViewController.m in Sources */,
 				75B4025B1D10FA08002EE404 /* UIButton+PressAnimation.m in Sources */,
 				75B402611D1107CD002EE404 /* NSObject+modelConvertDic.m in Sources */,
+				75437DE11D12982D000C6DC1 /* LocationManger.m in Sources */,
 				75FADB431D0FDBCE006088BF /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,7 +643,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PhotoManger/PhotoManger.pch";
 				INFOPLIST_FILE = PhotoManger/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zengjiaPhoto.PhotoManger;
@@ -641,7 +657,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PhotoManger/PhotoManger.pch";
 				INFOPLIST_FILE = PhotoManger/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zengjiaPhoto.PhotoManger;

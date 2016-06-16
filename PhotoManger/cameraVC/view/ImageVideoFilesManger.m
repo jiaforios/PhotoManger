@@ -10,6 +10,7 @@
 
 static NSString *const photoFile = @"/photoFile";
 static NSString *const videoFile = @"/videoFile";
+static NSString *const remarkFile = @"zemarkFile";
 
 @implementation ImageVideoFilesManger
 
@@ -77,7 +78,7 @@ static NSString *const videoFile = @"/videoFile";
         return patch;
     }else
     {
-      BOOL isss =  [[NSFileManager defaultManager] createFileAtPath:patch contents:data attributes:nil];
+       [[NSFileManager defaultManager] createFileAtPath:patch contents:data attributes:nil];
         return patch;
     }
 }
@@ -86,16 +87,29 @@ static NSString *const videoFile = @"/videoFile";
 + (NSString *)PhotoFilePath
 {
     NSString *photoPath =  [[ImageVideoFilesManger documentPath] stringByAppendingString:photoFile];
-    [ImageVideoFilesManger createDirectoryPath:photoPath];
+    photoPath =[ImageVideoFilesManger createDirectoryPath:photoPath];
     return photoPath;
 }
 
 + (NSString *)VideoFilePath
 {
     NSString *videoPath =  [[ImageVideoFilesManger documentPath] stringByAppendingString:videoFile];
-    [ImageVideoFilesManger createDirectoryPath:videoPath];
+   videoPath = [ImageVideoFilesManger createDirectoryPath:videoPath];
     return videoPath;
 }
+
++ (NSString *)RemarkDataFilePath
+{
+    NSString *remarkPath = [[ImageVideoFilesManger documentPath] stringByAppendingPathComponent:remarkFile];
+    remarkPath = [ImageVideoFilesManger createDirectoryPath:remarkPath];
+    return remarkPath;
+}
+
++ (BOOL)AchvieToFileWithDic:(NSDictionary *)dictionry andName:(NSString *)name
+{
+  return [NSKeyedArchiver archiveRootObject:dictionry toFile:[[ImageVideoFilesManger RemarkDataFilePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_remark.markdata",name]]];
+}
+
 @end
 
 

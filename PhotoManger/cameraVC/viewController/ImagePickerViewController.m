@@ -121,27 +121,53 @@
 - (void)createImageInfoModelWithimage:(UIImage *)image
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    
     ImageInfoModel *model = [[ImageInfoModel alloc] init];
-    model.imageData = imageData;
+//    model.imageData = imageData;
     model.imageSize=  image.size;
     model.imageSizeStr = [NSString stringWithFormat:@"%.f*%.f",image.size.width,image.size.height];
     // 根据拍摄时间创建文件路径
     NSArray *timeArr = [model.cameraTimes componentsSeparatedByString:@"_"];
+    // 每天对应的图片文件夹
+    
     NSString*dayFilename = [[timeArr subarrayWithRange:NSMakeRange(0, 3)] componentsJoinedByString:@""];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 创建图片
+       NSString *dayFile = [ImageVideoFilesManger createDirectoryPath:[NSString stringWithFormat:@"%@/%@",[ImageVideoFilesManger PhotoFilePath],dayFilename]];
         
+        // 原图文件夹
+        NSString *dayImageFile = [ImageVideoFilesManger createDirectoryPath:[NSString stringWithFormat:@"%@/%@",dayFile,[dayFilename stringByAppendingString:@"_image"]]];
+        model.imageDirectory = dayImageFile;
+        model.imageDirectoryName = [dayFilename stringByAppendingString:@"_image"];
+        // 缩略图文件夹
+        NSString *dayThumbFile = [ImageVideoFilesManger createDirectoryPath:[NSString stringWithFormat:@"%@/%@",dayFile,[dayFilename stringByAppendingString:@"_thumb"]]];
 
-      NSString *dayFile = [ImageVideoFilesManger createDirectoryPath:[NSString stringWithFormat:@"%@/%@",[ImageVideoFilesManger PhotoFilePath],dayFilename]];
+        // 创建缩略图
+        CGFloat thumbWith = 200;
+        CGFloat thumbHeight = thumbWith * (image.size.height / image.size.width);
+        //获取缩略图
+        UIGraphicsBeginImageContext(CGSizeMake(thumbWith, thumbHeight));
+        [image drawInRect:CGRectMake(0.f, 0.f, thumbWith, thumbHeight)];
+        UIImage *thumbImage = UIGraphicsGetImageFromCurrentImageContext();
+        NSData *thumbImageData = UIImageJPEGRepresentation(thumbImage, 1);
+        UIGraphicsEndImageContext();
+
+         // 原图文件
+        model.imageFile =  [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@.jpg",dayImageFile,model.cameraTimes] WithContentData:imageData];
+        // 缩略图文件
+       model.imageThumbFile = [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@_thumb.jpg",dayThumbFile,model.cameraTimes] WithContentData:thumbImageData];
+        // 将model 转化成 字典 使用归档的方式保存字典
+        [ImageVideoFilesManger AchvieToFileWithDic:[model dictionaryFromModelWithShowLog:YES] andName:model.cameraTimes];
         
-        [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@.jpg",dayFile,model.cameraTimes] WithContentData:model.imageData];
-        
-//       [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@/%@.jpg",[ImageVideoFilesManger PhotoFilePath],dayFile,model.cameraTimes] WithContentData:model.imageData];
     });
     
 //    showModelContent(model);
     
 }
+
+
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {

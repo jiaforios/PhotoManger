@@ -10,12 +10,12 @@
 #import <objc/runtime.h>
 @implementation NSObject (modelConvertDic)
 
-- (void)dictionaryFromModel
+- (NSDictionary *)dictionaryFromModelWithShowLog:(BOOL)show
 {
     if (self == nil) {
         
         NSLog(@"%@ To dic = nil",NSStringFromClass([self class]));
-        return;
+        return nil;
     }
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     // 获取类名/根据类名获取类对象
@@ -46,8 +46,11 @@
         
         [dict setObject:propertyValue forKey:propertyName];
     }
-    NSLog(@"%@ To dic = %@",NSStringFromClass([self class]),dict);
     
+    if (show) {
+        NSLog(@"%@ To dic = %@",NSStringFromClass([self class]),dict);
+    }
+    return dict;
 }
 
 @end

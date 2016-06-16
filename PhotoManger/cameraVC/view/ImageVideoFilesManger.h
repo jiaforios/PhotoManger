@@ -6,6 +6,12 @@
 //  Copyright © 2016年 zengjia. All rights reserved.
 //
 
+
+/**
+ 支持选中全部压缩，方便导出
+ */
+
+
 #import <Foundation/Foundation.h>
 
 @interface ImageVideoFilesManger : NSObject
@@ -26,7 +32,8 @@
 
 + (NSString *)VideoFilePath;  // 当前程序视频文件的根目录
 
++ (NSString *)RemarkDataFilePath;  // 存储图片，录像相关配置信息，文件格式定为 对应的图片名称_remark.markdata
 
-
++ (BOOL)AchvieToFileWithDic:(NSDictionary *)dictionry andName:(NSString *)name;
 
 @end

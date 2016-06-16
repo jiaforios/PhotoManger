@@ -21,9 +21,14 @@
     // Override point for customization after application launch.
     
     // 在程序的document 的文件夹下创建 photo 和 video 文件夹
+    [ImageVideoFilesManger PhotoFilePath];
+    [ImageVideoFilesManger VideoFilePath];
+    [ImageVideoFilesManger RemarkDataFilePath];
     
     
-    self.window.rootViewController = [[MainViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] init]];
+    
+    self.window.rootViewController = nav;
     
     return YES;
 }
