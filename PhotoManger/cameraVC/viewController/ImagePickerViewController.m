@@ -11,6 +11,8 @@
 #import "ImageVideoFilesManger.h"
 #import "ImageInfoModel.h"
 #import "LocationManger.h"
+#import "CustomPushAnimation.h"
+#import "PhotoViewController.h"
 @interface ImagePickerViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic, strong)CameraControlView *cameraControlView;
 @end
@@ -49,6 +51,7 @@
         NSArray *mediatypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
         self.mediaTypes = mediatypes;
         self.allowsEditing = YES;
+        self.navigationController.delegate = self;
         self.delegate = self;
     }
     
@@ -91,7 +94,16 @@
                 break;
             case Usephotpbutton:
             {
-                weakself.cameraViewTransform = CGAffineTransformMakeScale(1.7, 1.7);
+                PhotoViewController *pvc = [[PhotoViewController alloc] init];
+                
+                
+                pvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pvc];
+                
+                [weakself presentViewController:nav animated:YES completion:nil];
+                
+                
             }
                 break;
   
@@ -194,7 +206,7 @@
         
         NSLog(@"size = %@",NSStringFromCGSize(image.size));
         
-        NSDictionary *imageInfoDictionry = [info objectForKey:@"UIImagePickerControllerMediaMetadata"];
+//        NSDictionary *imageInfoDictionry = [info objectForKey:@"UIImagePickerControllerMediaMetadata"];
         
 //        NSLog(@"imageinfo = %@ ",imageInfoDictionry);
         // 将image 转化为data 数据
@@ -212,6 +224,69 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
+{
+    if (operation == UINavigationControllerOperationPush) {
+        
+        return [[CustomPushAnimation alloc] init];
+    }else
+        return nil;
+}
+
+
+
+- (void)anitions
+{
+    //    kCATransitionFade               //淡出
+    //
+    //                kCATransitionMoveIn          //覆盖原图
+    //
+    //                kCATransitionPush               //推出
+    //
+    //                kCATransitionReveal          //底部显出来
+    //
+    //            SubType:
+    //
+    //                kCATransitionFromRight
+    //
+    //                kCATransitionFromLeft    // 默认值
+    //
+    //                kCATransitionFromTop
+    //
+    //                kCATransitionFromBottom
+    //
+    //                设置其他动画类型的方法(type):
+    //
+    //                pageCurl   向上翻一页
+    //
+    //                pageUnCurl 向下翻一页
+    //
+    //                rippleEffect 滴水效果
+    //
+    //                suckEffect 收缩效果，如一块布被抽走
+    //
+    //                cube 立方体效果
+    //
+    //                oglFlip 上下翻转效果
+    
+    CATransition *animation = [CATransition animation];
+    
+    animation.duration = 0.3;
+    
+    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    
+    animation.type = @"cube";
+    
+    //animation.type = kCATransitionPush;
+    
+    animation.subtype = kCATransitionFromRight;
+    
+    [self.view.window.layer addAnimation:animation forKey:nil];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {

@@ -48,7 +48,8 @@
         [_useButton setTitle:PmLocalizedString(@"UsePhoto") forState:UIControlStateNormal];
         _useButton.frame = Frame(SCREEN_WIDTH-100, 0, 100,CGRectGetHeight(self.frame));
         _useButton.tag = Usephotpbutton;
-        [_useButton setImageEdgeInsets:UIEdgeInsetsMake(10, 20, 10, 20)];
+      [_useButton setImageEdgeInsets:UIEdgeInsetsMake(10, 20, 10, 20)];
+
         AddAction(_useButton, btnAction:);
         
     }
@@ -76,7 +77,6 @@
     }
 }
 
-
 - (CurrentImageBlock)imageBlcok
 {
    __weak CameraControlView *weakself = self;
@@ -85,14 +85,10 @@
         _imageBlcok = ^(UIImage *img){
             // 将刚拍的图片给右下角的按钮显示
             [weakself.useButton setImage:img forState:UIControlStateNormal];
-            
         };
     }
-    
     return _imageBlcok;
 }
-
-
 
 
 @end

@@ -25,18 +25,27 @@
     }
     return _dataSource;
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSArray *arr0 = @[@"记录图片位置",@"设置机主密码",@"设置访问者密码"];
     NSArray *arr1 = @[@"记录图片位置",@"设置机主密码",@"设置访问者密码"];
-    NSArray *arr2 = @[@"开启加密",@"图片浏览样式",@"允许分享",@"开启指纹识别",@"开启访问密码"];
-    NSArray *arr3 = @[@"删除全部图片",@"删除指定标签文件",@"删除指定时间点的图片"];
+    NSArray *arr2 = @[@"开启加密",@"图片浏览样式",@"设置主页背景图片",@"开启指纹识别",@"开启访问密码"];
+    NSArray *arr3 = @[@"删除全部图片",@"删除指定标签文件",@"删除指定时间点图片"];
 
     [self.dataSource addObject:arr1];
     [self.dataSource addObject:arr2];
     [self.dataSource addObject:arr3];
-
 
     
 

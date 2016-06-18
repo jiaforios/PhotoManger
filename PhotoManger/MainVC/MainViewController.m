@@ -25,6 +25,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     // 2
+    self.navigationController.navigationBarHidden = YES;
 }
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -42,7 +43,10 @@
 - (void)valueInit
 {
    self.view.backgroundColor = [UIColor whiteColor];
-
+    self.navigationController.navigationBarHidden = YES;
+    UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    img.image = [UIImage imageNamed:@"back"];
+    [self.view addSubview:img];
     
 }
 // 界面创建
@@ -100,8 +104,9 @@
 - (void)cameraAction:(UIButton *)sender
 {
 
+    
     ImagePickerViewController *picker = [ImagePickerViewController sharePickeManger];
-        
+
     [self presentViewController:picker animated:YES completion:nil];
     
 
