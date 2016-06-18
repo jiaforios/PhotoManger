@@ -57,7 +57,7 @@
         
         if (placemarks.count>0) {
             CLPlacemark *clp = [[CLPlacemark alloc] initWithPlacemark:placemarks[0]];
-            NSDictionary *addreDic = [clp addressDictionary];
+//            NSDictionary *addreDic = [clp addressDictionary];
             NSString *name = clp.name;
             
             if (_locablock) {

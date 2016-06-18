@@ -204,10 +204,6 @@
 
         [self createImageInfoModelWithimage:image];
         
-        
-        
-        //        [self dismissViewControllerAnimated:YES completion:nil];
-        
     }
     
 }
