@@ -19,6 +19,7 @@
         self.cameraTimes = [self getCurrentTime];
         self.imageClass = others;
         self.imageNameSufix = @".jpg";
+        self.bSelected = NO;  // 默认都是没选中状态
     }
     return self;
 }

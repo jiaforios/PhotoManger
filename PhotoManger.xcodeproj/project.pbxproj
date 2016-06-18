@@ -11,7 +11,12 @@
 		381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C48601D10401C000453D2 /* ImagePickerViewController.m */; };
 		754272C71D151B2000A6CDA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754272C61D151B2000A6CDA0 /* Images.xcassets */; };
 		754272CC1D151F7200A6CDA0 /* CustomPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 754272CB1D151F7200A6CDA0 /* CustomPushAnimation.m */; };
-		754272CF1D1523A400A6CDA0 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 754272CE1D1523A400A6CDA0 /* PhotoViewController.m */; };
+		754272E31D153AD500A6CDA0 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 754272DD1D153AD500A6CDA0 /* PhotoViewController.m */; };
+		754272E41D153AD500A6CDA0 /* PhotoCollviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 754272E11D153AD500A6CDA0 /* PhotoCollviewCell.m */; };
+		754272E51D153AD500A6CDA0 /* PhotoCollviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 754272E21D153AD500A6CDA0 /* PhotoCollviewCell.xib */; };
+		754272E91D153B9B00A6CDA0 /* image_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = 754272E81D153B9B00A6CDA0 /* image_nor.png */; };
+		754272EB1D153BA900A6CDA0 /* image_selct.png in Resources */ = {isa = PBXBuildFile; fileRef = 754272EA1D153BA900A6CDA0 /* image_selct.png */; };
+		754272EE1D153E9400A6CDA0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 754272ED1D153E9400A6CDA0 /* info.png */; };
 		75437DDE1D1289BF000C6DC1 /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75437DDD1D1289BF000C6DC1 /* SetViewController.m */; };
 		75437DE11D12982D000C6DC1 /* LocationManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 75437DE01D12982D000C6DC1 /* LocationManger.m */; };
 		75437DE31D129CFA000C6DC1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75437DE21D129CFA000C6DC1 /* CoreLocation.framework */; };
@@ -68,8 +73,14 @@
 		754272C61D151B2000A6CDA0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		754272CA1D151F7200A6CDA0 /* CustomPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPushAnimation.h; sourceTree = "<group>"; };
 		754272CB1D151F7200A6CDA0 /* CustomPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPushAnimation.m; sourceTree = "<group>"; };
-		754272CD1D1523A400A6CDA0 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
-		754272CE1D1523A400A6CDA0 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		754272DC1D153AD500A6CDA0 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		754272DD1D153AD500A6CDA0 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		754272E01D153AD500A6CDA0 /* PhotoCollviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollviewCell.h; sourceTree = "<group>"; };
+		754272E11D153AD500A6CDA0 /* PhotoCollviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollviewCell.m; sourceTree = "<group>"; };
+		754272E21D153AD500A6CDA0 /* PhotoCollviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollviewCell.xib; sourceTree = "<group>"; };
+		754272E81D153B9B00A6CDA0 /* image_nor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_nor.png; path = ../photoVC/view/image_nor.png; sourceTree = "<group>"; };
+		754272EA1D153BA900A6CDA0 /* image_selct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_selct.png; path = ../photoVC/view/image_selct.png; sourceTree = "<group>"; };
+		754272ED1D153E9400A6CDA0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		75437DDC1D1289BF000C6DC1 /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		75437DDD1D1289BF000C6DC1 /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		75437DDF1D12982D000C6DC1 /* LocationManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManger.h; path = ../cameraVC/view/LocationManger.h; sourceTree = "<group>"; };
@@ -203,6 +214,42 @@
 			path = Mangers;
 			sourceTree = "<group>";
 		};
+		754272DB1D153AD500A6CDA0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				754272DC1D153AD500A6CDA0 /* PhotoViewController.h */,
+				754272DD1D153AD500A6CDA0 /* PhotoViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		754272DE1D153AD500A6CDA0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		754272DF1D153AD500A6CDA0 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				754272E01D153AD500A6CDA0 /* PhotoCollviewCell.h */,
+				754272E11D153AD500A6CDA0 /* PhotoCollviewCell.m */,
+				754272E21D153AD500A6CDA0 /* PhotoCollviewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		754272EC1D153C2D00A6CDA0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				754272ED1D153E9400A6CDA0 /* info.png */,
+				754272EA1D153BA900A6CDA0 /* image_selct.png */,
+				754272E81D153B9B00A6CDA0 /* image_nor.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		75B402521D10E9E7002EE404 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +308,7 @@
 		75FADAC11D0FD9D4006088BF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				754272EC1D153C2D00A6CDA0 /* Images */,
 				75FADAC21D0FD9D4006088BF /* main.m */,
 				75FADB441D0FDC39006088BF /* PhotoManger.pch */,
 				75FADB451D0FDDBB006088BF /* Define.h */,
@@ -360,8 +408,9 @@
 		75FADB981D0FF1CD006088BF /* photoVC */ = {
 			isa = PBXGroup;
 			children = (
-				754272CD1D1523A400A6CDA0 /* PhotoViewController.h */,
-				754272CE1D1523A400A6CDA0 /* PhotoViewController.m */,
+				754272DB1D153AD500A6CDA0 /* Controller */,
+				754272DE1D153AD500A6CDA0 /* Model */,
+				754272DF1D153AD500A6CDA0 /* view */,
 			);
 			path = photoVC;
 			sourceTree = "<group>";
@@ -479,8 +528,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				75FADB8C1D0FE57F006088BF /* Info.plist in Resources */,
+				754272E91D153B9B00A6CDA0 /* image_nor.png in Resources */,
+				754272EE1D153E9400A6CDA0 /* info.png in Resources */,
 				754272C71D151B2000A6CDA0 /* Images.xcassets in Resources */,
+				754272EB1D153BA900A6CDA0 /* image_selct.png in Resources */,
 				75FADAD11D0FD9D4006088BF /* LaunchScreen.storyboard in Resources */,
+				754272E51D153AD500A6CDA0 /* PhotoCollviewCell.xib in Resources */,
 				75FADACE1D0FD9D4006088BF /* Assets.xcassets in Resources */,
 				75FADACC1D0FD9D4006088BF /* Main.storyboard in Resources */,
 			);
@@ -514,11 +567,12 @@
 				381C485D1D103FEF000453D2 /* CameraControlView.m in Sources */,
 				75FADAC31D0FD9D4006088BF /* main.m in Sources */,
 				381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */,
-				754272CF1D1523A400A6CDA0 /* PhotoViewController.m in Sources */,
+				754272E41D153AD500A6CDA0 /* PhotoCollviewCell.m in Sources */,
 				75FADB701D0FE2E8006088BF /* MainViewController.m in Sources */,
 				75FADB951D0FE57F006088BF /* View+MASAdditions.m in Sources */,
 				75B402581D10F248002EE404 /* ImageFileModel.m in Sources */,
 				75FADB8D1D0FE57F006088BF /* MASCompositeConstraint.m in Sources */,
+				754272E31D153AD500A6CDA0 /* PhotoViewController.m in Sources */,
 				75FADB911D0FE57F006088BF /* MASViewAttribute.m in Sources */,
 				75B402551D10EA0B002EE404 /* ImageInfoModel.m in Sources */,
 				75FADB8F1D0FE57F006088BF /* MASConstraintMaker.m in Sources */,

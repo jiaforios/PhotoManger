@@ -36,5 +36,5 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong)NSString *imageSizeStr;         // 图片尺寸 字符串形式
 @property(nonatomic, strong)NSString *imageRemark;        // 图片信息备注
 @property(nonatomic, strong)NSData *imageData;           // 图片二进制数据，一般不用，比较占内存
-
+@property(nonatomic, assign)BOOL bSelected;
 @end
