@@ -14,7 +14,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 @property(nonatomic, strong)UICollectionView *colltionView;
 @property(nonatomic,strong)NSMutableArray*datasource;
-@property(nonatomic,strong)UICollectionViewFlowLayout *flowOut;
 
 @end
 
@@ -58,14 +57,13 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     if (_colltionView == nil) {
         
-        _flowOut = [[UICollectionViewFlowLayout alloc] init];
-        _flowOut.itemSize = CGSizeMake(100, 100);
-        _flowOut.minimumLineSpacing = 10;
-        _flowOut.minimumInteritemSpacing = 10;
+      UICollectionViewFlowLayout*  flowOut = [[UICollectionViewFlowLayout alloc] init];
+        flowOut.itemSize = CGSizeMake(SCREEN_WIDTH/4., SCREEN_WIDTH/4.);
+        flowOut.minimumLineSpacing = 0;
+        flowOut.minimumInteritemSpacing = 0;
 
-        _colltionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_flowOut];
-        
-        [_colltionView registerNib:[UINib nibWithNibName:@"PhotoCollviewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+        _colltionView = [[UICollectionView alloc] initWithFrame:Frame(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:flowOut];
+        [_colltionView registerClass:[PhotoCollviewCell class] forCellWithReuseIdentifier:reuseIdentifier];
         
         _colltionView.backgroundColor =[ UIColor whiteColor];
         _colltionView.delegate = self;
@@ -78,29 +76,28 @@ static NSString * const reuseIdentifier = @"Cell";
 
 # pragma  mark  collection delegate
 
-//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-//{
-////    return self.datasource.count;
-//    
-//}
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.datasource.count;
+    
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
  
-//    NSArray *rowArr =self.datasource[section];
-//    return rowArr.count;
-//    
-    return 10;
+    NSArray *rowArr =self.datasource[section];
+    return rowArr.count;
+  
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    
+    
     PhotoCollviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 //    cell.imageRemarkPath = _datasource[indexPath.section][indexPath.item];
 
-    cell.backgroundColor = RGBCOLOR(arc4random()%256/255., arc4random()%256/255., arc4random()%256/255.);
+    cell.backgroundColor = RGBCOLOR(arc4random()%256, arc4random()%256, arc4random()%256);
 //     当编辑状态下选中cell 时应该同时修改数据源中的选中属性，下次加载的时候就能保持选中状态
 
     

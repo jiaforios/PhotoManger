@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		381C485D1D103FEF000453D2 /* CameraControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C485C1D103FEF000453D2 /* CameraControlView.m */; };
 		381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381C48601D10401C000453D2 /* ImagePickerViewController.m */; };
+		384DC8C21D165D42004F9FFC /* DayPhotoTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384DC8C11D165D42004F9FFC /* DayPhotoTabVC.m */; };
 		754272C71D151B2000A6CDA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754272C61D151B2000A6CDA0 /* Images.xcassets */; };
 		754272CC1D151F7200A6CDA0 /* CustomPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 754272CB1D151F7200A6CDA0 /* CustomPushAnimation.m */; };
 		754272E31D153AD500A6CDA0 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 754272DD1D153AD500A6CDA0 /* PhotoViewController.m */; };
@@ -70,6 +71,8 @@
 		381C485C1D103FEF000453D2 /* CameraControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraControlView.m; sourceTree = "<group>"; };
 		381C485F1D10401C000453D2 /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
 		381C48601D10401C000453D2 /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
+		384DC8C01D165D42004F9FFC /* DayPhotoTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayPhotoTabVC.h; sourceTree = "<group>"; };
+		384DC8C11D165D42004F9FFC /* DayPhotoTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayPhotoTabVC.m; sourceTree = "<group>"; };
 		754272C61D151B2000A6CDA0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		754272CA1D151F7200A6CDA0 /* CustomPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPushAnimation.h; sourceTree = "<group>"; };
 		754272CB1D151F7200A6CDA0 /* CustomPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPushAnimation.m; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 		754272DB1D153AD500A6CDA0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				384DC8C01D165D42004F9FFC /* DayPhotoTabVC.h */,
+				384DC8C11D165D42004F9FFC /* DayPhotoTabVC.m */,
 				754272DC1D153AD500A6CDA0 /* PhotoViewController.h */,
 				754272DD1D153AD500A6CDA0 /* PhotoViewController.m */,
 			);
@@ -578,6 +583,7 @@
 				75FADB8F1D0FE57F006088BF /* MASConstraintMaker.m in Sources */,
 				75FADB931D0FE57F006088BF /* NSArray+MASAdditions.m in Sources */,
 				75FADB961D0FE57F006088BF /* ViewController+MASAdditions.m in Sources */,
+				384DC8C21D165D42004F9FFC /* DayPhotoTabVC.m in Sources */,
 				75B4025E1D10FDD3002EE404 /* ImageVideoFilesManger.m in Sources */,
 				75FADB8E1D0FE57F006088BF /* MASConstraint.m in Sources */,
 				75FADB901D0FE57F006088BF /* MASLayoutConstraint.m in Sources */,

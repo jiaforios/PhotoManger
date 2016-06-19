@@ -12,6 +12,7 @@
 #import "ImageVideoFilesManger.h"
 #import "SetViewController.h"
 #import "LocationManger.h"
+#import "DayPhotoTabVC.h"
 @interface MainViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIButton *phontoButton;
@@ -114,8 +115,11 @@
 
 - (void)photoAction:(UIButton *)sender
 {
-    SetViewController *set = [[SetViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    [self.navigationController pushViewController:set animated:YES];
+    
+    DayPhotoTabVC *dpvc = [[DayPhotoTabVC alloc] init];
+    
+//    SetViewController *set = [[SetViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:dpvc animated:YES];
 }
 - (void)viewWillLayoutSubviews
 {
