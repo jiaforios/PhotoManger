@@ -807,7 +807,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zengjiaPhoto.PhotoManger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5ddda7b-9c12-426b-97ae-0a61a4a1b4c3";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -823,7 +823,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zengjiaPhoto.PhotoManger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5ddda7b-9c12-426b-97ae-0a61a4a1b4c3";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

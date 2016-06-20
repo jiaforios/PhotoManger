@@ -168,9 +168,9 @@
         UIGraphicsEndImageContext();
 
          // 原图文件
-        model.imageFile =  [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@.jpg",dayImageFile,model.cameraTimes] WithContentData:imageData];
+         [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@.jpg",dayImageFile,model.cameraTimes] WithContentData:imageData];
         // 缩略图文件
-       model.imageThumbFile = [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@_thumb.jpg",dayThumbFile,model.cameraTimes] WithContentData:thumbImageData];
+         [ImageVideoFilesManger cerateFilePath:[NSString stringWithFormat:@"%@/%@_thumb.jpg",dayThumbFile,model.cameraTimes] WithContentData:thumbImageData];
         // 获取到地理位置信息，然后保存到对应的图片数据中
         
         dispatch_async(dispatch_get_main_queue(), ^{

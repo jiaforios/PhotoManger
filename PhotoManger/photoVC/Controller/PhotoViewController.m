@@ -48,8 +48,10 @@ static NSString * const reuseIdentifier = @"Cell";
     [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dic = [ImageVideoFilesManger UnachiveFromFileWithName:obj];  // 解档数据
         ImageInfoModel *infoModel = [[ImageInfoModel alloc] init];
-        infoModel.imageThumbFile = dic[@"imageThumbFile"];
-//        [infoModel assginToPropertyWithDic:dic];
+        infoModel.imageThumbFile = [ImageVideoFilesManger thumbPathFromName:dic[@"cameraTimes"]];
+        infoModel.imageFile = [ImageVideoFilesManger imagePathFromName:dic[@"cameraTimes"]];
+        
+        [infoModel assginToPropertyWithDic:dic];
         [imageInfoArr addObject:infoModel];
         
     }];
@@ -102,9 +104,10 @@ static NSString * const reuseIdentifier = @"Cell";
     PhotoCoelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 //    cell.imageRemarkPath = _datasource[indexPath.section][indexPath.item];
     ImageInfoModel *infoModel = _datasource[indexPath.item];
-//    cell.photoView.image = [UIImage imageWithContentsOfFile:infoModel.imageThumbFile];  // 加载缩略图
-    cell.photoView.image = [UIImage imageNamed:@"back"];
-    cell.backgroundColor = RGBCOLOR(arc4random()%256, arc4random()%256, arc4random()%256);
+    NSString *path = infoModel.imageThumbFile;
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    cell.photoView.image = image;
+//    cell.backgroundColor = RGBCOLOR(arc4random()%256, arc4random()%256, arc4random()%256);
 //     当编辑状态下选中cell 时应该同时修改数据源中的选中属性，下次加载的时候就能保持选中状态
 
     return cell;

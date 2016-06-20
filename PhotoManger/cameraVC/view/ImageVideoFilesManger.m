@@ -132,6 +132,24 @@ static NSString *const remarkFile = @"zemarkFile";
     return subdirectoryArr;
     
 }
+
++ (NSString *)thumbPathFromName:(NSString *)imageName
+{
+    
+    NSArray  *arr = [imageName componentsSeparatedByString:@"_"];
+    NSString *str = [[arr subarrayWithRange:NSMakeRange(0, 3)] componentsJoinedByString:@"_"];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@_thumb/%@_thumb.jpg",[ImageVideoFilesManger PhotoFilePath],str,str,imageName];
+    return path;
+}
+
++ (NSString *)imagePathFromName:(NSString *)imageName
+{
+    NSArray  *arr = [imageName componentsSeparatedByString:@"_"];
+    NSString *str = [[arr subarrayWithRange:NSMakeRange(0, 3)] componentsJoinedByString:@"_"];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@_image/%@.jpg",[ImageVideoFilesManger PhotoFilePath],str,str,imageName];
+    return path;
+}
+
 @end
 
 

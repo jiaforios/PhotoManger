@@ -10,20 +10,6 @@
 
 @implementation PhotoCoelCell
 
-- (instancetype)init
-{
-    if (self = [super init]) {
-        
-        [self.contentView addSubview:self.photoView];
-//        [self.photoView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            
-//            make.edges.equalTo(self.contentView).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
-//            
-//        }];
-
-    }
-    return self;
-}
 
 - (UIImageView *)photoView
 {
@@ -32,7 +18,17 @@
         _photoView = [[UIImageView alloc] initWithFrame:Frame(0, 0, 80, 80)];
         
     }
+    
+ [self.contentView addSubview:_photoView];
+    
+    [_photoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.edges.equalTo(self.contentView).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        
+    }];
     return _photoView;
+    
+    
 }
 
 

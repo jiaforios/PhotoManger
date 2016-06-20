@@ -42,4 +42,8 @@
 
 + (NSArray *)SubFilesInDirectoty:(NSString *)file;
 
++ (NSString *)thumbPathFromName:(NSString *)imageName;
++ (NSString *)imagePathFromName:(NSString *)imageName;
+
+
 @end
