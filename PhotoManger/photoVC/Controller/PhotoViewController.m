@@ -48,10 +48,10 @@ static NSString * const reuseIdentifier = @"Cell";
     [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dic = [ImageVideoFilesManger UnachiveFromFileWithName:obj];  // 解档数据
         ImageInfoModel *infoModel = [[ImageInfoModel alloc] init];
+        [infoModel assginToPropertyWithDic:dic];
         infoModel.imageThumbFile = [ImageVideoFilesManger thumbPathFromName:dic[@"cameraTimes"]];
         infoModel.imageFile = [ImageVideoFilesManger imagePathFromName:dic[@"cameraTimes"]];
-        
-        [infoModel assginToPropertyWithDic:dic];
+
         [imageInfoArr addObject:infoModel];
         
     }];
@@ -74,9 +74,9 @@ static NSString * const reuseIdentifier = @"Cell";
     if (_colltionView == nil) {
         
       UICollectionViewFlowLayout*  flowOut = [[UICollectionViewFlowLayout alloc] init];
-        flowOut.itemSize = CGSizeMake(SCREEN_WIDTH/4., SCREEN_WIDTH/4.);
-        flowOut.minimumLineSpacing = 0;
-        flowOut.minimumInteritemSpacing = 0;
+        flowOut.itemSize = CGSizeMake((SCREEN_WIDTH-6)/4., (SCREEN_WIDTH-6)/4.);
+        flowOut.minimumLineSpacing = 2;
+        flowOut.minimumInteritemSpacing = 2;
 
         _colltionView = [[UICollectionView alloc] initWithFrame:Frame(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:flowOut];
         [_colltionView registerClass:[PhotoCoelCell class] forCellWithReuseIdentifier:reuseIdentifier];

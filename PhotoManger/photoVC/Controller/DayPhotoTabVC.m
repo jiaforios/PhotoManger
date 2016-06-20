@@ -8,6 +8,7 @@
 
 #import "DayPhotoTabVC.h"
 #import "PhotoViewController.h"
+#import "ImageInfoModel.h"
 @interface DayPhotoTabVC ()
 
 @property(nonatomic, strong) NSMutableArray *dataSource;
@@ -75,7 +76,11 @@
     
     cell.textLabel.text = _dataSource[indexPath.row];
     cell.detailTextLabel.text = [self subArrCountFromPath:indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:@"back"];
+    
+    ImageInfoModel *mdoel = [[self getImageDataFromRemarkInfoInArr:[self imageArrInPath:indexPath.row]] lastObject]; // 获取最新的一张图片显示
+    
+    cell.imageView.image = [UIImage imageWithContentsOfFile:mdoel.imageThumbFile];
+    
     UIGraphicsBeginImageContext(CGSizeMake(70, 70));
     
     [cell.imageView.image drawInRect:CGRectMake(0, 0, 70, 70)];
@@ -124,6 +129,24 @@
     return arr;
     
 }
+
+- (NSMutableArray *)getImageDataFromRemarkInfoInArr:(NSArray *)arr
+{
+    NSMutableArray *imageInfoArr = [[NSMutableArray alloc] init];
+    
+    [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *dic = [ImageVideoFilesManger UnachiveFromFileWithName:obj];  // 解档数据
+        ImageInfoModel *infoModel = [[ImageInfoModel alloc] init];
+        [infoModel assginToPropertyWithDic:dic];
+        infoModel.imageThumbFile = [ImageVideoFilesManger thumbPathFromName:dic[@"cameraTimes"]];
+        infoModel.imageFile = [ImageVideoFilesManger imagePathFromName:dic[@"cameraTimes"]];
+
+        [imageInfoArr addObject:infoModel];
+        
+    }];
+    return imageInfoArr;
+}
+
 
 /**
  *  显示在detailTextLable 的数量
