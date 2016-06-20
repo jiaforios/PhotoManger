@@ -39,4 +39,7 @@
 
 // 解档图片的配置信息
 + (NSDictionary *)UnachiveFromFileWithName:(NSString *)name;
+
++ (NSArray *)SubFilesInDirectoty:(NSString *)file;
+
 @end

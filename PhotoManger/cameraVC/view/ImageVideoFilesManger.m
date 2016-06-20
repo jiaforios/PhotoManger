@@ -7,7 +7,6 @@
 //
 
 #import "ImageVideoFilesManger.h"
-
 static NSString *const photoFile = @"/photoFile";
 static NSString *const videoFile = @"/videoFile";
 static NSString *const remarkFile = @"zemarkFile";
@@ -112,10 +111,27 @@ static NSString *const remarkFile = @"zemarkFile";
 
 + (NSDictionary *)UnachiveFromFileWithName:(NSString *)name
 {
-    NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithFile:[[ImageVideoFilesManger RemarkDataFilePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_remark.markdata",name]]];
+    NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithFile:[[ImageVideoFilesManger RemarkDataFilePath] stringByAppendingPathComponent:name]];
     return dic;
 }
 
++ (NSArray *)SubFilesInDirectoty:(NSString *)file
+{
+//    NSArray *subFileArr = [[NSFileManager defaultManager] subpathsAtPath:file]; // 能够遍历到当前路径下的全部路径，及子路径
+//    
+//    NSArray *subdirectoryArr = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:file error:nil];
+    
+    NSError *error;
+    
+   NSArray*  subdirectoryArr =  [[NSFileManager defaultManager] contentsOfDirectoryAtPath:file error:&error]; // 只遍历当前目录下的内容，不遍历 子文件夹的内容
+    if (error) {
+        
+        NSLog(@"___%s___查询子目录结果失败",__func__);
+        return nil;
+    }
+    return subdirectoryArr;
+    
+}
 @end
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "DayPhotoTabVC.h"
-
+#import "PhotoViewController.h"
 @interface DayPhotoTabVC ()
 
 @property(nonatomic, strong) NSMutableArray *dataSource;
@@ -26,11 +26,23 @@
     [super viewDidLoad];
     self.title = PmLocalizedString(@"Photos");
     self.title = @"Photos";
-
     
-
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    _dataSource = [[ImageVideoFilesManger SubFilesInDirectoty:[ImageVideoFilesManger PhotoFilePath]] mutableCopy];
+    
+    [_dataSource enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        NSMutableString *mStr =[[NSMutableString alloc] initWithString:(NSString *)obj];
+        [mStr replaceCharactersInRange:NSMakeRange(4, 1) withString:@"年"];
+        [mStr replaceCharactersInRange:NSMakeRange(7, 1) withString:@"月"];
+        [mStr insertString:@"日" atIndex:10];
+        
+        [_dataSource replaceObjectAtIndex:idx withObject:mStr];
+    }];
+
 }
+
 - (NSMutableArray *)dataSource
 {
     if (_dataSource == nil) {
@@ -52,7 +64,7 @@
     return 100.f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -61,12 +73,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     }
     
-    cell.textLabel.text = @"2016年06月29";
-    cell.detailTextLabel.text = @"5";
+    cell.textLabel.text = _dataSource[indexPath.row];
+    cell.detailTextLabel.text = [self subArrCountFromPath:indexPath.row];
     cell.imageView.image = [UIImage imageNamed:@"back"];
-    UIGraphicsBeginImageContext(CGSizeMake(80, 80));
+    UIGraphicsBeginImageContext(CGSizeMake(70, 70));
     
-    [cell.imageView.image drawInRect:CGRectMake(0, 0, 80, 80)];
+    [cell.imageView.image drawInRect:CGRectMake(0, 0, 70, 70)];
     
     cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -77,10 +89,69 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // 选中cell 根据当前天获取到当前cell 对应的所有的Remark_infomation
+    PhotoViewController *pvc = [[PhotoViewController alloc] init];
+    pvc.remarkDataSource =     [self imageArrInPath:indexPath.row];
+    [self.navigationController pushViewController:pvc animated:YES];
+    
 }
+
+/**
+ *  选中天数后获取当天的全部图片信息数组
+ *
+ *  @param index 天
+ *
+ *  @return 图片数组
+ */
+- (NSArray *)imageArrInPath:(NSInteger)index
+{
+    // 2016_06_20
+    NSString *str = [ImageVideoFilesManger SubFilesInDirectoty:[ImageVideoFilesManger PhotoFilePath]][index];
+    // 根据日期筛选图片对应的 remarkInfomations;
+
+    NSArray *arr = [ImageVideoFilesManger SubFilesInDirectoty:[ImageVideoFilesManger RemarkDataFilePath]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@",str];
+    arr = [arr filteredArrayUsingPredicate:predicate];
+
+    arr = [arr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+       return [obj1 compare:obj2];
+    }];
+    
+    return arr;
+    
+}
+
+/**
+ *  显示在detailTextLable 的数量
+ *
+ *  @param index 天
+ *
+ *  @return 图片数量
+ */
+
+- (NSString *)subArrCountFromPath:(NSInteger)index
+{
+    // path 2016_06_20
+    NSString *path = [ImageVideoFilesManger SubFilesInDirectoty:[ImageVideoFilesManger PhotoFilePath]][index];
+    
+    // 2016_06_20_thumb
+    NSString *imagePath = [path stringByAppendingString:@"_thumb"];
+    
+    
+    // /var/mobile/Containers/Data/Application/9B9D2E93-65AF-4036-8ED3-38708550646F/Documents/photoFile/2016_06_20/2016_06_20_thumb 获取该目录下的文件数量
+    
+    NSArray *arr = [ImageVideoFilesManger SubFilesInDirectoty:[[[ImageVideoFilesManger PhotoFilePath] stringByAppendingPathComponent:path]stringByAppendingPathComponent:imagePath]];
+    
+    
+    return [NSString stringWithFormat:@"%lu",(unsigned long)arr.count];
+    
+}
+
+
 
 /*
 // Override to support conditional editing of the table view.

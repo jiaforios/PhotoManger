@@ -12,4 +12,5 @@
 #import "Define.h"
 #import "Masonry.h"
 #import "NSObject+modelConvertDic.h"
+#import "ImageVideoFilesManger.h"
 #endif /* PhotoManger_pch */

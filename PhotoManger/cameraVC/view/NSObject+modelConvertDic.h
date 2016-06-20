@@ -10,4 +10,5 @@
 
 @interface NSObject (modelConvertDic)
 - (NSDictionary *)dictionaryFromModelWithShowLog:(BOOL)show;
+- (void)assginToPropertyWithDic:(NSDictionary *)dic;
 @end

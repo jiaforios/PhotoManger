@@ -53,4 +53,36 @@
     return dict;
 }
 
+
+- (void)assginToPropertyWithDic:(NSDictionary *)dic
+{
+    
+    if (dic == nil) {
+        return;
+    }
+    
+    
+    NSArray *keys = [dic allKeys];
+    for (NSInteger i = 0; i<keys.count; i++) {
+        SEL setSel = [self createSetterWithPropertyName:keys[i]];
+        
+        if ([self respondsToSelector:setSel]) {
+            
+            NSString *value = [NSString stringWithFormat:@"%@",dic[keys[i]]];
+            
+            [self performSelector:setSel withObject:value afterDelay:[NSThread isMainThread]];
+            
+        }
+        
+    }
+    
+}
+
+- (SEL)createSetterWithPropertyName:(NSString *)propertyName
+{
+    propertyName = propertyName.capitalizedString;
+    propertyName =[NSString stringWithFormat:@"set%@",propertyName];
+    return NSSelectorFromString(propertyName);
+}
+
 @end

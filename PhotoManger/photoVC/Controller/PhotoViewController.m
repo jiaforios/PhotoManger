@@ -7,7 +7,9 @@
 //
 
 #import "PhotoViewController.h"
-#import "PhotoCollviewCell.h"
+#import "PhotoCoelCell.h"
+#import "ImageInfoModel.h"
+
 static NSString * const reuseIdentifier = @"Cell";
 
 @interface PhotoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -27,26 +29,38 @@ static NSString * const reuseIdentifier = @"Cell";
         _datasource = [[NSMutableArray alloc] init];
     }
     
+    _datasource = [_remarkDataSource mutableCopy];
+    
+   _datasource =  [self getImageDataFromRemarkInfoInArr:_remarkDataSource];
+    
     return _datasource;
+}
+/**
+ *  根据数组中的元素找到指定的remarkInfo 文件，并且解码数据转化成对应的模型存入数组中
+ *
+ *  @param arr remarkinfo file 数组
+ *  return  图片信息数组
+ */
+- (NSMutableArray *)getImageDataFromRemarkInfoInArr:(NSArray *)arr
+{
+    NSMutableArray *imageInfoArr = [[NSMutableArray alloc] init];
+    
+    [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *dic = [ImageVideoFilesManger UnachiveFromFileWithName:obj];  // 解档数据
+        ImageInfoModel *infoModel = [[ImageInfoModel alloc] init];
+        infoModel.imageThumbFile = dic[@"imageThumbFile"];
+//        [infoModel assginToPropertyWithDic:dic];
+        [imageInfoArr addObject:infoModel];
+        
+    }];
+    
+    return imageInfoArr;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    // datasoure 中装的是photoFile 目录下每天的数组
-    // rowArr 中装的应该是imageRemarInfo 图片配置路径
-    
-    NSMutableArray *rowArr = [[NSMutableArray alloc] init];
-    [rowArr addObject:@"1"];
-    [rowArr addObject:@"1"];
-    [rowArr addObject:@"1"];
-    [rowArr addObject:@"1"];
-
-    
-    [self.datasource addObject:rowArr];
-    [self.datasource addObject:rowArr];
-    [self.datasource addObject:rowArr];
 
     [self.view addSubview:self.colltionView];
     
@@ -63,8 +77,8 @@ static NSString * const reuseIdentifier = @"Cell";
         flowOut.minimumInteritemSpacing = 0;
 
         _colltionView = [[UICollectionView alloc] initWithFrame:Frame(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:flowOut];
-        [_colltionView registerClass:[PhotoCollviewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-        
+        [_colltionView registerClass:[PhotoCoelCell class] forCellWithReuseIdentifier:reuseIdentifier];
+
         _colltionView.backgroundColor =[ UIColor whiteColor];
         _colltionView.delegate = self;
         _colltionView.dataSource = self;
@@ -76,31 +90,23 @@ static NSString * const reuseIdentifier = @"Cell";
 
 # pragma  mark  collection delegate
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return self.datasource.count;
-    
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
- 
-    NSArray *rowArr =self.datasource[section];
-    return rowArr.count;
-  
+    return self.datasource.count;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    PhotoCollviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    PhotoCoelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 //    cell.imageRemarkPath = _datasource[indexPath.section][indexPath.item];
-
+    ImageInfoModel *infoModel = _datasource[indexPath.item];
+//    cell.photoView.image = [UIImage imageWithContentsOfFile:infoModel.imageThumbFile];  // 加载缩略图
+    cell.photoView.image = [UIImage imageNamed:@"back"];
     cell.backgroundColor = RGBCOLOR(arc4random()%256, arc4random()%256, arc4random()%256);
 //     当编辑状态下选中cell 时应该同时修改数据源中的选中属性，下次加载的时候就能保持选中状态
 
-    
     return cell;
 }
 

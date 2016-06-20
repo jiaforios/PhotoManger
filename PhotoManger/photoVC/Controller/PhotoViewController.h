@@ -10,4 +10,6 @@
 
 @interface PhotoViewController : PmBaseViewController
 
+@property(nonatomic,strong) NSArray *remarkDataSource;// [2016_06_20_11_22_26_54_remark.markdata,.... ]
+
 @end

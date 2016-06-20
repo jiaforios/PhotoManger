@@ -13,6 +13,7 @@
 #import "LocationManger.h"
 #import "CustomPushAnimation.h"
 #import "PhotoViewController.h"
+#import "MJExtension.h"
 @interface ImagePickerViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property(nonatomic, strong)CameraControlView *cameraControlView;
 @end
@@ -143,7 +144,7 @@
     NSArray *timeArr = [model.cameraTimes componentsSeparatedByString:@"_"];
     // 每天对应的图片文件夹
     
-    NSString*dayFilename = [[timeArr subarrayWithRange:NSMakeRange(0, 3)] componentsJoinedByString:@""];
+    NSString*dayFilename = [[timeArr subarrayWithRange:NSMakeRange(0, 3)] componentsJoinedByString:@"_"];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 创建图片
@@ -176,16 +177,16 @@
             [LocationManger  shareLoacationWithLocationBlock:^(NSString *name, LocationInfo imglocation) {
                 NSLog(@"name = %@ ",name);
                 if (name !=nil) {
-                    // 解档到数据后 修改信息
                     model.locations = imglocation;
                     model.imageLoactions = name;
                     // 再次归档
-                    [ImageVideoFilesManger AchvieToFileWithDic:[model dictionaryFromModelWithShowLog:YES] andName:model.cameraTimes];
+                
+            [ImageVideoFilesManger AchvieToFileWithDic:[model dictionaryFromModelWithShowLog:YES] andName:model.cameraTimes];
                 }
             }];
         });
         // 将model 转化成 字典 使用归档的方式保存字典
-        [ImageVideoFilesManger AchvieToFileWithDic:[model dictionaryFromModelWithShowLog:YES] andName:model.cameraTimes];
+            [ImageVideoFilesManger AchvieToFileWithDic:[model dictionaryFromModelWithShowLog:YES] andName:model.cameraTimes];
         
     });
 //    showModelContent(model);
