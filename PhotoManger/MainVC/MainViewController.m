@@ -45,9 +45,9 @@
 {
    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = YES;
-    UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    img.image = [UIImage imageNamed:@"back"];
-    [self.view addSubview:img];
+//    UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.bounds];
+//    img.image = [UIImage imageNamed:@"main.jpg"];
+//    [self.view addSubview:img];
     
 }
 // 界面创建
@@ -81,7 +81,7 @@
 {
     if (!_cameraButton) {
         _cameraButton  =  [UIButton buttonWithType:UIButtonTypeCustom];
-        _cameraButton.backgroundColor = [UIColor blueColor];
+        [_cameraButton setImage:[UIImage imageNamed:@"photoAlbum2"] forState:UIControlStateNormal];
         _cameraButton.layer.cornerRadius = CGRectGetWidth(_cameraButton.frame)/2.f;
         AddAction(_cameraButton, cameraAction:);
     }
@@ -92,7 +92,7 @@
 {
     if (!_phontoButton) {
         _phontoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _phontoButton.backgroundColor =[UIColor redColor];
+        [_phontoButton setImage:[UIImage imageNamed:@"photoAlbum1"] forState:UIControlStateNormal];
         _phontoButton.layer.cornerRadius = CGRectGetWidth(_phontoButton.frame)/2.f;
         AddAction(_phontoButton, photoAction:);
     }
@@ -129,10 +129,6 @@
 - (void)viewDidLayoutSubviews
 {
     // 4
-    _cameraButton.layer.cornerRadius = CGRectGetWidth(_cameraButton.frame)/2.f;
-    
-    _phontoButton.layer.cornerRadius = CGRectGetWidth(_phontoButton.frame)/2.f;
-
     if ([UIDevice currentDevice].orientation  == UIDeviceOrientationPortrait) {
         [_cameraButton mas_updateConstraints:^(MASConstraintMaker *make) {
             

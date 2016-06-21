@@ -11,11 +11,12 @@
 @implementation PhotoCoelCell
 
 
+
 - (UIImageView *)photoView
 {
     if (_photoView == nil) {
         
-        _photoView = [[UIImageView alloc] initWithFrame:Frame(0, 0, 80, 80)];
+        _photoView = [[UIImageView alloc] init];
         
     }
     

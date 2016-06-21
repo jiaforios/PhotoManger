@@ -9,18 +9,25 @@
 #import "PhotoViewController.h"
 #import "PhotoCoelCell.h"
 #import "ImageInfoModel.h"
-
+#import "PhotosBrowserView.h"
 static NSString * const reuseIdentifier = @"Cell";
 
 @interface PhotoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic, strong)UICollectionView *colltionView;
 @property(nonatomic,strong)NSMutableArray*datasource;
+@property(nonatomic, strong)PhotosBrowserView *pvc;
 
 @end
 
 @implementation PhotoViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
+}
 
 - (NSMutableArray *)datasource
 {
@@ -28,7 +35,6 @@ static NSString * const reuseIdentifier = @"Cell";
         
         _datasource = [[NSMutableArray alloc] init];
     }
-    
     _datasource = [_remarkDataSource mutableCopy];
     
    _datasource =  [self getImageDataFromRemarkInfoInArr:_remarkDataSource];
@@ -61,10 +67,10 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.view.backgroundColor = [UIColor whiteColor];
 
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.colltionView];
+
     
 }
 
@@ -78,7 +84,7 @@ static NSString * const reuseIdentifier = @"Cell";
         flowOut.minimumLineSpacing = 2;
         flowOut.minimumInteritemSpacing = 2;
 
-        _colltionView = [[UICollectionView alloc] initWithFrame:Frame(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:flowOut];
+        _colltionView = [[UICollectionView alloc] initWithFrame:Frame(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:flowOut];
         [_colltionView registerClass:[PhotoCoelCell class] forCellWithReuseIdentifier:reuseIdentifier];
 
         _colltionView.backgroundColor =[ UIColor whiteColor];
@@ -102,16 +108,102 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     
     PhotoCoelCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-//    cell.imageRemarkPath = _datasource[indexPath.section][indexPath.item];
     ImageInfoModel *infoModel = _datasource[indexPath.item];
     NSString *path = infoModel.imageThumbFile;
     UIImage *image = [UIImage imageWithContentsOfFile:path];
     cell.photoView.image = image;
-//    cell.backgroundColor = RGBCOLOR(arc4random()%256, arc4random()%256, arc4random()%256);
-//     当编辑状态下选中cell 时应该同时修改数据源中的选中属性，下次加载的时候就能保持选中状态
-
     return cell;
 }
+
+
+-  (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    _pvc = [[PhotosBrowserView alloc] initWithFrame:self.view.bounds];
+    _pvc.transform = CGAffineTransformMakeScale(0.0001, 0.0001);
+    [self.view addSubview:_pvc];
+    _pvc.dataSource = _datasource;
+    _pvc.tapIndex = indexPath.item;
+    
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    
+    __block PhotoViewController *weakself = self;
+    _pvc.tapblock = ^(NSInteger count){
+    
+        if (count == 1) {
+            
+        weakself.navigationController.navigationBarHidden = NO;
+            
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            
+//          weakself.navigationController.navigationBarHidden = YES;
+//
+//                
+//            });
+            
+         [UIView animateWithDuration:0.25 animations:^{
+                
+                weakself.pvc.transform = CGAffineTransformMakeScale(0.001, 0.001);
+                
+          }];
+            
+            
+        }
+    };
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        _pvc.transform = CGAffineTransformMakeScale(1, 1);
+        self.navigationController.navigationBarHidden = YES;
+        
+    } completion:^(BOOL finished) {
+        
+        self.navigationController.navigationBarHidden = YES;
+
+    }];
+    
+}
+
+static int place = 0;
+
+- (void)makeAnimationWithPoint:(CGPoint)point
+{
+    place = 1;
+    CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"position"];
+    animation1.fromValue = [NSValue valueWithCGPoint:point];
+    animation1.toValue = [NSValue valueWithCGPoint:self.view.center];
+    
+    CABasicAnimation *animation2 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation2.fromValue = [NSNumber numberWithFloat:0];
+    animation2.toValue = [NSNumber numberWithFloat:1.];
+    
+    CAAnimationGroup *group= [CAAnimationGroup animation];
+    group.delegate = self;
+    group.duration = 0.5;
+    group.animations = @[animation1,animation2];
+
+    [_pvc.layer addAnimation:group forKey:@"animations"];
+}
+
+- (void)makeBackAnimationWithPoint:(CGPoint)point
+{
+    place = 2;
+    CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"position"];
+    animation1.fromValue = [NSValue valueWithCGPoint:point];
+    animation1.toValue = [NSValue valueWithCGPoint:CGPointZero];
+    
+    CABasicAnimation *animation2 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation2.fromValue = [NSNumber numberWithFloat:1.];
+    animation2.toValue = [NSNumber numberWithFloat:0];
+    
+    CAAnimationGroup *group= [CAAnimationGroup animation];
+    group.delegate = self;
+    group.duration = 0.5;
+    group.animations = @[animation1,animation2];
+    [_pvc.layer addAnimation:group forKey:@"animations"];
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {

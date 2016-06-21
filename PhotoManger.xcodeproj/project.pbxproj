@@ -35,6 +35,9 @@
 		75B4025B1D10FA08002EE404 /* UIButton+PressAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B4025A1D10FA08002EE404 /* UIButton+PressAnimation.m */; };
 		75B4025E1D10FDD3002EE404 /* ImageVideoFilesManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B4025D1D10FDD3002EE404 /* ImageVideoFilesManger.m */; };
 		75B402611D1107CD002EE404 /* NSObject+modelConvertDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B402601D1107CD002EE404 /* NSObject+modelConvertDic.m */; };
+		75C987141D1914630045A33B /* PhotosBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C987131D1914630045A33B /* PhotosBrowserView.m */; };
+		75C987171D1918CE0045A33B /* CustomPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C987161D1918CE0045A33B /* CustomPopAnimation.m */; };
+		75C987191D1940810045A33B /* main.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 75C987181D1940810045A33B /* main.jpg */; };
 		75FADAC31D0FD9D4006088BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADAC21D0FD9D4006088BF /* main.m */; };
 		75FADAC61D0FD9D4006088BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FADAC51D0FD9D4006088BF /* AppDelegate.m */; };
 		75FADACC1D0FD9D4006088BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FADACA1D0FD9D4006088BF /* Main.storyboard */; };
@@ -128,6 +131,11 @@
 		75B4025D1D10FDD3002EE404 /* ImageVideoFilesManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageVideoFilesManger.m; path = ../cameraVC/view/ImageVideoFilesManger.m; sourceTree = "<group>"; };
 		75B4025F1D1107CD002EE404 /* NSObject+modelConvertDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+modelConvertDic.h"; path = "../cameraVC/view/NSObject+modelConvertDic.h"; sourceTree = "<group>"; };
 		75B402601D1107CD002EE404 /* NSObject+modelConvertDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+modelConvertDic.m"; path = "../cameraVC/view/NSObject+modelConvertDic.m"; sourceTree = "<group>"; };
+		75C987121D1914630045A33B /* PhotosBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosBrowserView.h; sourceTree = "<group>"; };
+		75C987131D1914630045A33B /* PhotosBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosBrowserView.m; sourceTree = "<group>"; };
+		75C987151D1918CE0045A33B /* CustomPopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopAnimation.h; sourceTree = "<group>"; };
+		75C987161D1918CE0045A33B /* CustomPopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopAnimation.m; sourceTree = "<group>"; };
+		75C987181D1940810045A33B /* main.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main.jpg; sourceTree = "<group>"; };
 		75FADABE1D0FD9D4006088BF /* PhotoManger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoManger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75FADAC21D0FD9D4006088BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75FADAC41D0FD9D4006088BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -243,6 +251,8 @@
 				75B4025D1D10FDD3002EE404 /* ImageVideoFilesManger.m */,
 				754272CA1D151F7200A6CDA0 /* CustomPushAnimation.h */,
 				754272CB1D151F7200A6CDA0 /* CustomPushAnimation.m */,
+				75C987151D1918CE0045A33B /* CustomPopAnimation.h */,
+				75C987161D1918CE0045A33B /* CustomPopAnimation.m */,
 			);
 			path = Mangers;
 			sourceTree = "<group>";
@@ -254,6 +264,8 @@
 				384DC8C11D165D42004F9FFC /* DayPhotoTabVC.m */,
 				754272DC1D153AD500A6CDA0 /* PhotoViewController.h */,
 				754272DD1D153AD500A6CDA0 /* PhotoViewController.m */,
+				75C987121D1914630045A33B /* PhotosBrowserView.h */,
+				75C987131D1914630045A33B /* PhotosBrowserView.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,6 +289,7 @@
 		754272EC1D153C2D00A6CDA0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				75FADB461D0FE021006088BF /* Lib */,
 				754272ED1D153E9400A6CDA0 /* info.png */,
 				754272EA1D153BA900A6CDA0 /* image_selct.png */,
 				754272E81D153B9B00A6CDA0 /* image_nor.png */,
@@ -355,7 +368,6 @@
 				75FADB981D0FF1CD006088BF /* photoVC */,
 				75FADB991D0FF1CD006088BF /* SettingVC */,
 				75FADB6D1D0FE2E8006088BF /* MainVC */,
-				75FADB461D0FE021006088BF /* Lib */,
 				75FADB3C1D0FDBCE006088BF /* Common */,
 				75FADACA1D0FD9D4006088BF /* Main.storyboard */,
 				75FADACD1D0FD9D4006088BF /* Assets.xcassets */,
@@ -412,7 +424,8 @@
 			children = (
 				75FADB711D0FE57F006088BF /* Masonry */,
 			);
-			path = Lib;
+			name = Lib;
+			path = ../Lib;
 			sourceTree = "<group>";
 		};
 		75FADB6D1D0FE2E8006088BF /* MainVC */ = {
@@ -420,6 +433,7 @@
 			children = (
 				75FADB6E1D0FE2E8006088BF /* MainViewController.h */,
 				75FADB6F1D0FE2E8006088BF /* MainViewController.m */,
+				75C987181D1940810045A33B /* main.jpg */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -591,6 +605,7 @@
 			files = (
 				75FADB8C1D0FE57F006088BF /* Info.plist in Resources */,
 				754272E91D153B9B00A6CDA0 /* image_nor.png in Resources */,
+				75C987191D1940810045A33B /* main.jpg in Resources */,
 				754272EE1D153E9400A6CDA0 /* info.png in Resources */,
 				754272C71D151B2000A6CDA0 /* Images.xcassets in Resources */,
 				754272EB1D153BA900A6CDA0 /* image_selct.png in Resources */,
@@ -628,8 +643,10 @@
 				7583AAC61D17C7CD00EB37CD /* NSObject+MJKeyValue.m in Sources */,
 				75FADAC61D0FD9D4006088BF /* AppDelegate.m in Sources */,
 				381C485D1D103FEF000453D2 /* CameraControlView.m in Sources */,
+				75C987141D1914630045A33B /* PhotosBrowserView.m in Sources */,
 				75FADAC31D0FD9D4006088BF /* main.m in Sources */,
 				381C48611D10401C000453D2 /* ImagePickerViewController.m in Sources */,
+				75C987171D1918CE0045A33B /* CustomPopAnimation.m in Sources */,
 				75FADB701D0FE2E8006088BF /* MainViewController.m in Sources */,
 				75FADB951D0FE57F006088BF /* View+MASAdditions.m in Sources */,
 				75B402581D10F248002EE404 /* ImageFileModel.m in Sources */,
@@ -798,7 +815,7 @@
 		75FADAEC1D0FD9D4006088BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PhotoManger/PhotoManger.pch";
 				INFOPLIST_FILE = PhotoManger/Info.plist;
@@ -814,7 +831,7 @@
 		75FADAED1D0FD9D4006088BF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PhotoManger/PhotoManger.pch";
 				INFOPLIST_FILE = PhotoManger/Info.plist;

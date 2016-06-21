@@ -9,7 +9,7 @@
 #import "DayPhotoTabVC.h"
 #import "PhotoViewController.h"
 #import "ImageInfoModel.h"
-@interface DayPhotoTabVC ()
+@interface DayPhotoTabVC ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
 
 @property(nonatomic, strong) NSMutableArray *dataSource;
 
@@ -27,7 +27,13 @@
     [super viewDidLoad];
     self.title = PmLocalizedString(@"Photos");
     self.title = @"Photos";
+    UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    img.image = [UIImage imageNamed:@"main.jpg"];
+
+    self.tableView.backgroundView = img;
+    UIBarButtonItem *addBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(photoAlbum)];
     
+    self.navigationItem.rightBarButtonItem = addBtn;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     _dataSource = [[ImageVideoFilesManger SubFilesInDirectoty:[ImageVideoFilesManger PhotoFilePath]] mutableCopy];
@@ -44,6 +50,100 @@
 
 }
 
+- (void)photoAlbum
+{
+    UIActionSheet *sheet;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        sheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"相机拍照",@"从相册选择",nil];
+        
+    }else{
+        
+        sheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil ];
+        
+    }
+    
+    sheet.tag = 255;
+    
+    [sheet showInView:self.view];
+}
+
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (actionSheet.tag==255) {
+        
+        NSUInteger sourceType =0;
+        
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            
+            switch (buttonIndex) {
+                    
+                case 0:
+                    
+                    //cancel
+                    
+                    return;
+                    
+                case 1:
+                    
+                    sourceType = UIImagePickerControllerSourceTypeCamera;
+                    
+                    break;
+                    
+                case 2:
+                    
+                    sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    
+                    break;
+                    
+            }
+            
+        }else
+            
+        {
+            
+            if (buttonIndex==0) {
+                
+                return;
+                
+            }else{
+                
+                sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+                
+            }
+            
+        }
+        
+        
+        
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        
+        imagePickerController.delegate = self;
+        
+        imagePickerController.allowsEditing = YES;
+        
+        imagePickerController.sourceType = sourceType;
+        
+        [self presentViewController:imagePickerController animated:YES completion:^{}];
+        
+        
+        
+    }
+    
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    [picker dismissViewControllerAnimated:YES completion:^{}];
+    // 获取到选中的图片
+//    UIImage *image =[info objectForKey:UIImagePickerControllerOriginalImage];
+    
+
+}
 - (NSMutableArray *)dataSource
 {
     if (_dataSource == nil) {
@@ -53,9 +153,7 @@
     return _dataSource;
     
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
+
 
 #pragma mark - Table view data source
 
@@ -90,6 +188,7 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
@@ -219,5 +318,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
 
 @end
