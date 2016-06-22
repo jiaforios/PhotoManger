@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "ImageVideoFilesManger.h"
-
+#import "UMSocial.h"
 @interface AppDelegate ()
 
 @end
@@ -20,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [UMSocialData setAppKey:@"576a30a2e0f55acf62002a88"];
     // 在程序的document 的文件夹下创建 photo 和 video 文件夹
     [ImageVideoFilesManger PhotoFilePath];
     [ImageVideoFilesManger VideoFilePath];

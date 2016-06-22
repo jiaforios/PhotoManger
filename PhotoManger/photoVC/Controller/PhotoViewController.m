@@ -10,6 +10,7 @@
 #import "PhotoCoelCell.h"
 #import "ImageInfoModel.h"
 #import "PhotosBrowserView.h"
+#import "UMSocial.h"
 static NSString * const reuseIdentifier = @"Cell";
 
 @interface PhotoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -131,35 +132,39 @@ static NSString * const reuseIdentifier = @"Cell";
     _pvc.tapblock = ^(NSInteger count){
     
         if (count == 1) {
+ 
+//         [UIView animateWithDuration:0.25 animations:^{
+//            weakself.pvc.transform = CGAffineTransformMakeScale(0.001, 0.001);
+//          }];
             
-        weakself.navigationController.navigationBarHidden = NO;
             
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            
-//          weakself.navigationController.navigationBarHidden = YES;
-//
-//                
-//            });
-            
-         [UIView animateWithDuration:0.25 animations:^{
-                
+        }
+    };
+    
+    _pvc.contnBlock = ^(NSInteger index){
+        if (index == 0) {
+            weakself.navigationController.navigationBarHidden = NO;
+            [UIView animateWithDuration:0.25 animations:^{
                 weakself.pvc.transform = CGAffineTransformMakeScale(0.001, 0.001);
-                
-          }];
-            
-            
+            }];
+        }
+        if (index == 1) {        
+            [UMSocialSnsService presentSnsIconSheetView:weakself
+                                                 appKey:@"576a30a2e0f55acf62002a88"
+                                              shareText:@"好看的图片"
+                                             shareImage:[UIImage imageNamed:@"Default"]
+                                        shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToQQ,UMShareToWechatSession,nil]
+                                               delegate:nil];
+
         }
     };
     
     [UIView animateWithDuration:0.25 animations:^{
         
         _pvc.transform = CGAffineTransformMakeScale(1, 1);
-        self.navigationController.navigationBarHidden = YES;
-        
+        weakself.navigationController.navigationBarHidden = YES;
     } completion:^(BOOL finished) {
-        
-        self.navigationController.navigationBarHidden = YES;
-
+        weakself.navigationController.navigationBarHidden = YES;
     }];
     
 }
